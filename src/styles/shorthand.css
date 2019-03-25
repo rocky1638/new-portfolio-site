@@ -1,0 +1,9 @@
+.f-aic {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.f-jcc {
+  display: flex !important;
+  justify-content: center !important;
+}
