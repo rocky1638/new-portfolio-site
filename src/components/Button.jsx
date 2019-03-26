@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   };
 
 
-  @media only screen and  (max-width: 767px) {
+  @media only screen and  (max-width: 768px) {
     font-size: 15px;
     width: 75px;
     padding: 7px 0;

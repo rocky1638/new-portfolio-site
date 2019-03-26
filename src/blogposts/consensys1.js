@@ -42,6 +42,72 @@ const data = {
     {
       header: 'june 1 - june 30',
     },
+    {
+      body: "June was a pretty good month for me. John ended up going to the Himalayas for vacation, leaving me as the main frontend developer. In this time, I got to work on some of Lucia's designs, including the new modal design as well as the new sidebar. Here's some screenshots of those:",
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/error-modal.png",
+        subtitle: "error modal",
+      },
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/sidebar.png",
+        subtitle: "the new sidebar",
+      },
+    },
+    {
+      body: "Overall, I'd say I started feeling like a real member of the team at this point, especially with the level of responsibility I had to take on during John's absence.",
+    },
+    {
+      header: "july 1 - july 30",
+    },
+    {
+      body: "July was a lot of the same, just with even bigger features. The main feature that I worked on during july was the <b>Sponsor Dashboard</b>. It was a comprehensive page that offered token/asset sponsors to view the performance of their asset, and see information such as a history transactions, and all the investors that were currently trading their property/token.",
+    },
+    {
+      body: "It was quite a large page with a bunch of new components, so I definitely feel like it helped me improve my technical skills. Here's a couple screenshots from that page:",
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/sponsor-dashboard1_small.png",
+        subtitle: "the sponsor dashboard",
+      },
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/sponsor-dashboard2.png",
+        subtitle: "anotha one",
+      },
+    },
+    {
+      header: "august 1 - august 30",
+    },
+    {
+      body: "This was my last month working for Meridio <i>(for now)</i>, and it was definitely a bittersweet month. I couldn't help but feel sad that I was leaving this project, as I have to admit that at this point, I feel decently committed to the success and future of the company."
+    },
+    {
+      body: "This feeling was even further pushed along when I flew out to New York to meet the team. <b>Everyone is so nice 😁</b>"
+    },
+    {
+      body: "This month has been just as busy, with me working on new features such as a new and improved profile/wallets page as well as brand new user onboarding, to teach user's how to install and get set up with MetaMask."
+    },
+    {
+      body: "To be honest though, instead of talking about those things, I'd rather just post a couple pictures of New York 🗽"
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/newyork2.jpeg",
+        subtitle: "walking to the office",
+      },
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/newyork1.jpeg",
+        subtitle: "sunset from the roof of mckibbin lofts",
+      },
+    },
   ],
 }
 

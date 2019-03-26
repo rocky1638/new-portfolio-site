@@ -6,7 +6,7 @@ import { Text, Button } from 'components'
 const ResponsiveHomeDiv = styled.div`
   padding: 0 25%;
 
-  @media only screen and  (max-width: 767px) {
+  @media only screen and  (max-width: 768px) {
     padding: 0 5%;
   }
 `
@@ -19,7 +19,7 @@ const Home = () => (
         block 
         fontWeight={500} 
         ginormous>
-        Hey! I'm Rock 👋
+        hey! i'm rock 👋
       </Text>
       <Text style={{ marginBottom: 10 }} block book gray4>
         Hi! I'm currently in my second year of Computer Science at the
@@ -32,7 +32,13 @@ const Home = () => (
         as guitar and piano.
       </Text>
       <div className="f-aic">
-        <Button>Resumé</Button>
+        <a 
+          href={`${process.env.PUBLIC_URL}/assets/resume.pdf`} 
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button>Resumé</Button>
+        </a>
         <Link to="/blog">
           <Button>Blog</Button>
         </Link>

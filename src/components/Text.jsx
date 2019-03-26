@@ -18,7 +18,7 @@ const StyledText = styled.span`
       ? props.theme.gray5 : props.gray8
         ? props.theme.gray8 : props.theme.black};
 
-  @media only screen and  (max-width: 767px) {
+  @media only screen and  (max-width: 768px) {
     font-size: ${props => props.ginormous 
       ? '40px' : props.huge 
         ? '30px' : props.header

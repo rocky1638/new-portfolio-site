@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Text, Image } from 'components'
+import blogPosts from 'blogposts'
 
 const ImageDiv = styled.div`
   height: 100%;
@@ -15,7 +16,7 @@ const BlogDiv = styled.div`
     padding: 30px 100px;
   }
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 768px) {
     padding: 30px 20px;
   }
 `
@@ -28,10 +29,10 @@ const Subtitle = ({ children }) =>
   <Text style={{ marginTop: -5}} big gray4 block>{children}</Text>
 
 const Date = ({ children }) => 
-  <Text block style={{ marginBottom: 20, marginTop: 17.5 }} gray8>- {children} -</Text>
+  <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
 
 const Header = ({ children }) =>
-  <Text header bold style={{ marginTop: 20, marginBottom: 10 }} block>{children}</Text>
+  <Text header bold style={{ marginTop: 20, marginBottom: 15 }} block>{children}</Text>
 
 const Body = ({ children }) =>
   <Text 
@@ -39,37 +40,37 @@ const Body = ({ children }) =>
     small 
     block
     book 
-    style={{ marginBottom: 10 }}>
+    style={{ marginBottom: 15 }}>
   </Text>
 
 const BlogImage = ({ src, subtitle }) => (
   <ImageDiv>
     <Image src={src} />
-    <Text 
+    { subtitle && <Text 
       style={{ marginBottom: 20 }}
       block 
       book 
       gray8 
-      small>{subtitle}</Text>
+      small>{subtitle}</Text> }
   </ImageDiv>
 )
 
 class Blogpost extends React.Component {
-  renderSection = section => {
+  renderSection = (section, index) => {
     const { header, body, image } = section
 
     if (header) {
-      return <Header>{header}</Header> 
+      return <Header key={index}>{header}</Header> 
     } else if (body) {
-      return <Body>{body}</Body> 
+      return <Body key={index}>{body}</Body> 
     } else if (image) {
       const { src, subtitle } = image
-      return <BlogImage src={src} subtitle={subtitle} />
+      return <BlogImage key={index} src={src} subtitle={subtitle} />
     }
   }
 
   render() {
-    const { data } = this.props
+    const data = blogPosts[this.props.match.params.postname]
     const { date, title, subtitle, content } = data
 
     return (
@@ -77,7 +78,7 @@ class Blogpost extends React.Component {
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
         <Date>{date}</Date>
-        {content.map(section => this.renderSection(section))}
+        {content.map((section, index) => this.renderSection(section, index))}
       </BlogDiv>
     )
   }
