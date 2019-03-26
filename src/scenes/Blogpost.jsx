@@ -1,9 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from 'components'
+import { Text, Image } from 'components'
+
+const ImageDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+`
 
 const BlogDiv = styled.div`
-  padding: 30px 20%;
+  padding: 30px 25%;
 
   @media only screen and (max-width: 1100px) {
     padding: 30px 100px;
@@ -36,6 +42,18 @@ const Body = ({ children }) =>
     style={{ marginBottom: 10 }}>
   </Text>
 
+const BlogImage = ({ src, subtitle }) => (
+  <ImageDiv>
+    <Image src={src} />
+    <Text 
+      style={{ marginBottom: 20 }}
+      block 
+      book 
+      gray8 
+      small>{subtitle}</Text>
+  </ImageDiv>
+)
+
 class Blogpost extends React.Component {
   renderSection = section => {
     const { header, body, image } = section
@@ -44,6 +62,9 @@ class Blogpost extends React.Component {
       return <Header>{header}</Header> 
     } else if (body) {
       return <Body>{body}</Body> 
+    } else if (image) {
+      const { src, subtitle } = image
+      return <BlogImage src={src} subtitle={subtitle} />
     }
   }
 

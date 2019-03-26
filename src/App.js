@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
 import { Home, Blogposts, Blogpost } from 'scenes'
 
-import { thewaterboys } from 'blogposts'
+import { thewaterboys, consensys1 } from 'blogposts'
 
 class App extends Component {
   render() {
@@ -18,6 +18,11 @@ class App extends Component {
             exact path="/blog/thewaterboys" 
             render={(routeProps) => 
               <Blogpost {...routeProps} data={thewaterboys} />}
+          />
+          <Route 
+            exact path="/blog/consensys1" 
+            render={(routeProps) => 
+              <Blogpost {...routeProps} data={consensys1} />}
           />
         </Switch>
       </BrowserRouter>
