@@ -1,10 +1,19 @@
 const data = {
-  title: 'The Water Boys',
-  subtitle: 'An unforgettable a capella experience',
-  date: 'June 12, 2018',
+  title: 'the water boys 🌊',
+  subtitle: 'an unforgettable a capella experience',
+  date: 'june 12, 2018',
   content: [
+    {
+      header: 'tl;dr'
+    },
+    {
+      body: "singing is fun.",
+    },
     { 
-      header: 'acapella?',
+      header: 'paella?',
+    },
+    {
+      body: "Not to be confused with the classic Spanish mixed rice dish, a capella is <i>music without instruments</i>. Great example <a href='https://www.youtube.com/watch?v=tffl66nJPWY' target='_blank'>here</a> if you're unfamiliar."
     },
     {
       body: "For as long as I can remember, I have always been fond of music, and singing. In fact, I've had many slightly embarassing moments related to my singing, including a time in which I sang to myself in the middle of a test <i>(I somehow did not realize I was singing at the time).</i>",
@@ -29,6 +38,12 @@ const data = {
     },
     {
       body: "Next, it was time to sing my songs. For my solo pieces, I decided to sing <a href='https://www.youtube.com/watch?v=hk9K032K7UM' target='_blank'>Talking To The Moon</a>, by Bruno Mars, and <a href='https://www.youtube.com/watch?v=dvgZkm1xWPE' target='_blank'>Viva La Vida</a>, by Coldplay. I felt like they both went pretty well, and I went away feeling pretty good about my chances of getting called back."
+    },
+    {
+      body: "Lo and behold, that night, I got an email inviting me to callbacks the next day. Callbacks were essentially run like what a normal rehearsal would be, and long story short, I eventually got the email congratulating me on making it into the Water Boys!"
+    },
+    {
+      header: "icca quarterfinals @ uwaterloo"
     },
   ],
 }

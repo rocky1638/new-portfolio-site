@@ -12,7 +12,7 @@ const ResponsiveHomeDiv = styled.div`
 `
 
 const Home = () => (
-  <div className="f-aic f-jcc" style={{ height: '100vh' }}>
+  <div className="f-aic f-jcc fadeUp" style={{ height: '100vh' }}>
     <ResponsiveHomeDiv>
       <Text 
         style={{ marginBottom: 15 }}

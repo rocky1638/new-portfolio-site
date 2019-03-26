@@ -19,10 +19,10 @@ const Title = ({ children }) => (
 )
 
 const Subtitle = ({ children }) => 
-  <Text big gray4 block>{children}</Text>
+  <Text style={{ marginTop: -5}} big gray4 block>{children}</Text>
 
 const Date = ({ children }) => 
-  <Text block style={{ marginBottom: 20, marginTop: 5 }} gray5>{children}</Text>
+  <Text block style={{ marginBottom: 20, marginTop: 17.5 }} gray8>- {children} -</Text>
 
 const Header = ({ children }) =>
   <Text header bold style={{ marginTop: 20, marginBottom: 10 }} block>{children}</Text>
