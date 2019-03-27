@@ -40,10 +40,46 @@ const data = {
       },
     },
     {
+      header: "prerequisites",
+    },
+    {
+      body: "Note that this tutorial will be targeted towards Mac OS, but most of the stuff I talk about will work on Linux and Windows with some tweaks, but you'll have to Google around some more.",
+    },
+    {
+      body: "Before we begin, if you don't have <a href='https://brew.sh/' target='_blank'>Homebrew</a> installed yet, make sure to install that right now.",
+    },
+    {
       header: "iterm2 + zsh",
     },
     {
-      body: "cool stuff like auto cd into stuff and syntax highlighting"
+      body: "First of all, we're going to want install iTerm2 and ZSH, which gives us a bunch of cool features that the regular Mac terminal doesn't provide. For a great tutorial to get started, check out <a href='https://medium.com/@falieson/setup-zsh-w-antigen-and-a-spacey-theme-7a66808218dc' target='_blank'>this Medium article by Florian Mettetal</a>."
+    },
+    {
+      body: "After you're done walking through that article, you should have iTerm2 installed, with a ZSH shell, and any custom themes that you might have found. If you're curious about my theme/font, skip to the bottom."
+    },
+    {
+      body: "There's plenty of documentation out there about why ZSH is better than the standard UNIX shell, but here are some of my most used features."
+    },
+    {
+      body: "First off, you can get intelligent tab-autocompletion on almost <i>every command you type</i> - this includes Git branch names and even the options for CLI packages that you're unfamiliar with."
+    },
+    {
+      body: "Next, something that really adds up over time is the feature where you can <code>cd</code> into a directory without ever typing those two letters. Simply type the path to the directory that you want to enter, and ZSH will automatically change into it."
+    },
+    {
+      body: "Finally, ZSH comes with a bunch of aliases out of the box, including several for <code>git</code>, as well as some more interesting ones that you never thought you needed, like the triple dot. Now, when you want to move two directories up, don't do this,"
+    },
+    {
+      code: "cd ../.."
+    },
+    {
+      body: "Just do this."
+    },
+    {
+      code: "...",
+    },
+    {
+      body: "For a list of all the aliases that you now have access to, just type <code>alias</code> into your terminal and start exploring. For now though, it's time to move onto Vim.",
     },
     {
       header: "vim",

@@ -43,6 +43,13 @@ const Body = ({ children }) =>
     style={{ marginBottom: 15 }}>
   </Text>
 
+const Code = ({ code }) =>
+  <div style={{ width: "100%", margin: "30px 0" }}>
+    <code className="code-block">
+      {code}
+    </code>
+  </div>
+
 const BlogImage = ({ src, subtitle }) => (
   <ImageDiv>
     <Image src={src} />
@@ -57,7 +64,7 @@ const BlogImage = ({ src, subtitle }) => (
 
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { header, body, image } = section
+    const { code, header, body, image } = section
 
     if (header) {
       return <Header key={index}>{header}</Header> 
@@ -66,6 +73,8 @@ class Blogpost extends React.Component {
     } else if (image) {
       const { src, subtitle } = image
       return <BlogImage key={index} src={src} subtitle={subtitle} />
+    } else if (code) {
+      return <Code code={code} />
     }
   }
 
