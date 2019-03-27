@@ -1,5 +1,11 @@
 const blogPostOverview = [
   {
+    title: "my coding setup",
+    postname: 'codesetup',
+    thumbnail: "https://s3.amazonaws.com/foodiy-beta/vim.png",
+    description: "a walkthrough of my dev setup, and why it's so great"
+  },
+  {
     title: "the water boys",
     postname: 'thewaterboys',
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/waterboys4.jpg",

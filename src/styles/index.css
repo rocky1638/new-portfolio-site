@@ -7,6 +7,7 @@ body {
 }
 
 code {
+  background-color: #44CBFF;
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
