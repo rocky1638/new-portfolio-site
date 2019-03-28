@@ -19,7 +19,7 @@ const Home = () => (
         block 
         fontWeight={500} 
         ginormous>
-        hey! i'm rock 👋
+        hey! i'm rock <span role="img" aria-label="hand waving">👋</span>
       </Text>
       <Text style={{ marginBottom: 10 }} block book gray4>
         Hi! I'm currently in my second year of Computer Science at the

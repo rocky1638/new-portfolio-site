@@ -64,8 +64,8 @@ class Blogposts extends React.Component {
               <Image style={{ width: "auto", height: "100%" }} noMargin src={thumbnail} />
             </ImageDiv>
             <div style={{ width: "100%" }}>
-              <Text big block style={{ marginBottom: 5 }}>{title}</Text>
-              <Text gray4 small block>{description}</Text>
+              <Text big block style={{ marginBottom: 0 }}>{title}</Text>
+              <Text gray4 description block>{description}</Text>
             </div>
           </BlogCardDiv>
         </Link>

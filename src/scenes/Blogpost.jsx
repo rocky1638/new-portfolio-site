@@ -32,7 +32,7 @@ const Date = ({ children }) =>
   <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
 
 const Header = ({ children }) =>
-  <Text header bold style={{ marginTop: 20, marginBottom: 15 }} block>{children}</Text>
+  <Text header bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
 
 const Body = ({ children }) =>
   <Text 
@@ -40,7 +40,7 @@ const Body = ({ children }) =>
     small 
     block
     book 
-    style={{ marginBottom: 15 }}>
+    style={{ marginBottom: 21 }}>
   </Text>
 
 const Code = ({ code }) =>
