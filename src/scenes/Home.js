@@ -23,8 +23,8 @@ const Home = () => (
       </Text>
       <Text style={{ marginBottom: 10 }} block book gray4>
         Hi! I'm currently in my second year of Computer Science at the
-        University of Waterloo, and focused on deep learning and
-        full-stack web development,<br/> <i>(and dabbling in a bit of design).</i>
+        University of Waterloo, and focused on deep learning
+        <i> (and dabbling in a bit of design).</i>
       </Text>
       <Text style={{ marginBottom: 20 }} block book gray4>
         When I'm not doing homework or sleeping, I enjoy playing badminton,

@@ -26,7 +26,7 @@ const StyledText = styled.span`
         ? '40px' : props.huge 
           ? '35px' : props.header
             ? '20px' : props.big
-              ? '22px' : props.small
+              ? '18px' : props.small
                 ? '16px' : '16px'};
   };
 `
