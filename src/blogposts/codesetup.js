@@ -85,7 +85,7 @@ const data = {
       header: "vim",
     },
     {
-      body: "There's probably hundreds or thousands of articles online that describe the benefits of Vim over traditional text/code editors, so I won't belabor the details, but just no that once you get really good at Vim, <b>no other method of editing large amounts of text will feel as good.</b>",
+      body: "There's probably hundreds or thousands of articles online that describe the benefits of Vim over traditional text/code editors, so I won't belabor the details, but just know that once you get really good at Vim, <b>no other method of editing large amounts of text will feel as good.</b>",
     },
     {
       body: "So, assuming that you've typed <code>vim</code> into your terminal and have familiarized yourself with moving around a file, let's get into the settings that will make your Vim easier to use. Just remember that the spirit of Vim is personalization and tinkering, so I'll just be giving some of my favorite settings and plugins, as opposed to providing the entirety of my settings.",

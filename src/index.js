@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import hljs from 'highlight.js'
+import 'highlight.js/styles/gruvbox-dark.css';
 import 'styles/shorthand.css';
 import 'styles/animations.css';
 import 'styles/fonts.css';
 import 'styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// code highlighting in code blocks
+hljs.initHighlightingOnLoad();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
