@@ -82,7 +82,7 @@ const data = {
       body: "For a list of all the aliases that you now have access to, just type <code>alias</code> into your terminal and start exploring. For now though, it's time to move onto Vim.",
     },
     {
-      header: "vim",
+      header: "vim - an intro",
     },
     {
       body: "There's probably hundreds or thousands of articles online that describe the benefits of Vim over traditional text/code editors, so I won't belabor the details, but just know that once you get really good at Vim, <b>no other method of editing large amounts of text will feel as good.</b>",
@@ -97,13 +97,22 @@ const data = {
       code: "vim ~/.vimrc",
     },
     {
+      header: "vim - settings",
+    },
+    {
       body: "First of all, here are some settings that really should come default with Vim.",
     },
     {
       code: "set tabstop=2<br />set softtabstop=2<br />set shiftwidth=2<br />set expandtab<br/>set backspace=indent,eol,start",
     },
     {
-      body: "These settings switch the sizing and behavior of the tab key, inserting spaces and changing the tab width to something that most people would be more familiar with. Then, the backspace line makes the backspace key smarter, deleting the new tabs as if they were still tabs.",
+      body: "These settings switch the sizing and behavior of the tab key, inserting spaces and changing the tab width to something that most people would be more familiar with. Then, the last line makes the backspace key smarter, deleting the new tabs as if they were still tabs.",
+    },
+    {
+      body: "Keeping with the spirit of Vim, feel free to adjust any of the values I show here or in the upcoming sections to something that you're more comfortable with.",
+    },
+    {
+      body: "Next up are some settings that I personally find quite useful, but aren't necessarily required.",
     },
     {
       header: "tmux",
