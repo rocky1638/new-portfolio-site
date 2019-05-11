@@ -9,7 +9,7 @@ const blogPostOverview = [
     title: "the water boys",
     postname: 'thewaterboys',
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/waterboys4.jpg",
-    description: "my time spent with uwaterloo's premier all-male a capella group"
+    description: "my time spent with uwaterloo's premiere all-male a capella group"
   },
   {
     title: "consensys",

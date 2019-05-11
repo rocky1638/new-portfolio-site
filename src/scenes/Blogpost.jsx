@@ -43,11 +43,11 @@ const Body = ({ children }) =>
     style={{ marginBottom: 21 }}>
   </Text>
 
-const Code = ({ code }) =>
+const Code = ({ code, language }) =>
   <div style={{ width: "100%", margin: "30px 0" }}>
     <pre>
     <code dangerouslySetInnerHTML={{ __html: code }}
-      className="code-block" />
+      className={`code-block ${language}`} />
     </pre>
   </div>
 
@@ -65,7 +65,7 @@ const BlogImage = ({ src, subtitle }) => (
 
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { code, header, body, image } = section
+    const { code, header, body, image, language } = section
 
     if (header) {
       return <Header key={index}>{header}</Header> 
@@ -75,7 +75,7 @@ class Blogpost extends React.Component {
       const { src, subtitle } = image
       return <BlogImage key={index} src={src} subtitle={subtitle} />
     } else if (code) {
-      return <Code code={code} />
+      return <Code code={code} language={language} />
     }
   }
 

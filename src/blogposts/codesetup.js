@@ -70,6 +70,7 @@ const data = {
       body: "Finally, ZSH comes with a bunch of aliases out of the box, including several for <code>git</code>, as well as some more interesting ones that you never thought you needed, like the triple dot. Now, when you want to move two directories up, don't do this,"
     },
     {
+      language: "shell",
       code: "cd ../.."
     },
     {
@@ -94,6 +95,7 @@ const data = {
       body: "Alright, if you haven't already, run this command to start editing your <code>.vimrc</code> file, and I'll share some of my base Vim settings.",
     },
     {
+      language: "console",
       code: "vim ~/.vimrc",
     },
     {
@@ -103,6 +105,7 @@ const data = {
       body: "First of all, here are some settings that really should come default with Vim.",
     },
     {
+      language: "vim",
       code: "set tabstop=2<br />set softtabstop=2<br />set shiftwidth=2<br />set expandtab<br/>set backspace=indent,eol,start",
     },
     {
@@ -113,6 +116,85 @@ const data = {
     },
     {
       body: "Next up are some settings that I personally find quite useful, but aren't necessarily required.",
+    },
+    {
+      language: "vim",
+      code: "set number<br/>set cursorline<br/>set wrap<br/>set autoindent",
+    },
+    {
+      body: "The first two settings add line numbers to Vim, and show highlighting on the line that you currently have selected. Then, the next two settings make your life easier, autoindenting and wrapping your text as you type.",
+    },
+    {
+      language: "vim",
+      code: "set incsearch<br/>set hlsearch<br/>set ignorecase<br/>set smartcase",
+    },
+    {
+      body: "This last set of settings improves the searching experience in Vim, highlighting matches as they are found and intelligently ignoring the case of your search if you only type lowercase letters. More information on searching in Vim can be found in the official wiki <a href='https://vim.fandom.com/wiki/Searching' target='_blank'>here</a>.",
+    },
+    {
+      body: "There's plenty more settings for Vim that you can feel free to play around with, which you can look through by typing <code>:options</code> into your Vim while in normal mode. For now though, I'm going to move onto plugins.",
+    },
+    {
+      header: "vim - plugins",
+    },
+    {
+      body: "Just as with any other text/code editor, plugins can be used to enhance and improve the code editing experience in Vim. To get started, we're going to need to install a plugin manager to make installing these plugins easier."
+    },
+    {
+      body: "I personally use <a href='https://github.com/VundleVim/Vundle.vim' target='_blank'>Vundle</a>, but <a href='https://github.com/junegunn/vim-plug' target='_blank'>Vim-Plug</a> is also a popular one. From what I can tell, they are functionally identical, so install whichever one your heart desires.",
+    },
+    {
+      body: "Now that you're set up to install plugins, let's start with some plugins that I can't live without.",
+    },
+    {
+      body: "<a href='https://github.com/kien/ctrlp.vim' target='_blank'>ctrlp.vim</a> - A fuzzy file searcher similar to what you'd find in other code editors like VSCode. An absolute must when working on projects of any reasonable size.",
+    },
+    {
+      body: "<a href='https://github.com/itchyny/lightline.vim' target='_blank'>lightline.vim</a> - A more aesthetically pleasing and themable status bar in the bottom of your Vim that provides useful information while editing.",
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/lightline.png",
+        subtitle: "my lightline",
+      },
+    },
+    {
+      body: "<a href='https://github.com/scrooloose/nerdtree' target='_blank'>nerdtree</a> - A visual file explorer that will be very familiar if you are coming from more feature-heavy code editors. Although you won't need it for most operations when you have ctrlp.vim as well as default Vim commands, it's always nice to see a visual representation of your project directory structure once in a while.",
+    },
+    {
+      image: {
+        src: "https://s3.amazonaws.com/foodiy-beta/nerdtree.png",
+        subtitle: "nerdtree",
+      },
+    },
+    {
+      body: "<a href='https://github.com/w0rp/ale' target='_blank'>ale</a> - An asynchronous linter that uses your previously installed linters like ESLint and Prettier to lint your code as you type and display errors and warnings in the sidebar. This plugin can also be configured to automatically fix your code when you save/edit your code.",
+    },
+    {
+      body: "<a href='https://github.com/ajh17/VimCompletesMe' target='_blank'>VimCompletesMe</a> - A simple plugin that maps all of the autocompletion commands in Vim to the tab key, so it's easier to access the autocompletion features that Vim has. Default Vim keybindings for autocompletion are pretty complicated, but you can find them <a href='https://www.youtube.com/watch?v=UWUtWMpUwIQ' target='_blank'>here</a> if you're curious.",
+    },
+    {
+      header: "vim - mappings",
+    },
+    {
+      body: "This is the part of Vim that really allows you to make Vim your own. Vim allows you to basically map any command to any combination of keys. The possibilities are endless, so I'm gonna share some of my favorite mappings, but feel free to add your own. A guide for adding mappings can be found <a href='https://medium.com/vim-drops/understand-vim-mappings-and-create-your-own-shortcuts-f52ee4a6b8ed' target='_blank'>here</a>.",
+    },
+    {
+      body: "First of all, we're going to remap the leader key to something that's easier to reach, as it is set to be the \\ by default. The leader key is a key specifically used for user made shortcuts, when we don't want to override any of the default Vim mappings.",
+    },
+    {
+      language: "vim",
+      code: "let mapleader=\",\"",
+    },
+    {
+      body: "Next up, some mappings to help you with general movement",
+    },
+    {
+      language: "vim",
+      code: "nnoremap j gj<br/>nnoremap k gk<br/>nnoremap B ^<br/>nnoremap E $",
+    },
+    {
+      body: "The first two mappings there map the normal up and down movement keys to visually respect wrapped lines, meaning that they'll behave more in the way that you expect them to. Then, the next two mappings are just logical continuations of the normal 'b' and 'e' commands, which move you to the beginning and end of a word respectively. I've mapped the capital versions of these letters to move you to the beginning and the end of the <b>line</b>, respectively.",
     },
     {
       header: "tmux",
