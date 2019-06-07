@@ -200,7 +200,34 @@ const data = {
       header: "tmux",
     },
     {
+      body: "TMUX is a <b>terminal multiplexer.</b> Essentially, what this means is that it allows you to open multiple instances of your terminal, dividing your terminal into panes and windows that allow you to take advantage of more complex workflows. For a quick rundown, check out this <a href='https://hackernoon.com/a-gentle-introduction-to-tmux-8d784c404340' target='_blank'>post from Hackernoon.</a>"
+    },
+    {
+      body: "There's a lot to get into when it comes to TMUX, so I recommend you do some research yourself. Personally, I like to start with the configuration provided <a href='https://github.com/gpakosz/.tmux' target='_blank'>here.</a>"
+    },
+    {
+      image: {
+        src: "https://foodiy-beta.s3.amazonaws.com/tmux.png",
+        subtitle: "an example of tmux",
+      }
+    },
+    {
       header: "a e s t h e t i c s",
+    },
+    {
+      body: "Finally, when it comes to aesthetics, the world is really your oyster. The main thing most people customize when it comes to aesthetics is their vim and terminal colorscheme. Some great resources for this include <a href='http://colorswat.ch/vim/' target='_blank'>colorswat.ch</a>, as well as just browsing the <a href='https://reddit.com/r/vim' target='_blank'>Vim subreddit</a>. Most of these colorschemes can be downloaded with your vim plugin manager that we installed before, and can be set in your <code>.vimrc</code>."
+    },
+    {
+      body: "Next, fonts can be changed through the settings of your terminal emulator, so choose whatever your heart desires. You can find some recommended free fonts <a href='https://www.reddit.com/r/linux/comments/529oy3/what_is_your_favorite_terminal_font/' target='_blank'>here</a>, as a starting point."
+    },
+    {
+      header: 'conclusion',
+    },
+    {
+      body: "Hopefully this is enough to convince you to at least give this terminal-only workflow a shot. I promise that if you give it time and a little bit of tinkering, you'll be able to be more efficient then you would with other workflows."
+    },
+    {
+      body: "<b>P.S.</b> As you start tinkering with your configuration and achieving something that you like, I highly recommend backing up these configuration files, or 'dotfiles', to Github. A tutorial to do this can be found <a href='https://www.atlassian.com/git/tutorials/dotfiles' target='_blank'>here</a>.",
     },
   ],
 }
