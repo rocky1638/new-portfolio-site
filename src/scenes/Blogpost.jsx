@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Text, Image } from 'components'
+import { NotFound } from 'scenes'
 import blogPosts from 'blogposts'
 
 const ImageDiv = styled.div`
@@ -81,6 +82,11 @@ class Blogpost extends React.Component {
 
   render() {
     const data = blogPosts[this.props.match.params.postname]
+
+    if (!data) {
+      return <NotFound />
+    }
+
     const { date, title, subtitle, content } = data
 
     return (

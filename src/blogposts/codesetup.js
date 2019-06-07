@@ -1,7 +1,7 @@
 const data = {
   title: "my local dev setup",
   subtitle: "aka: why you should learn vim",
-  date: "march 26, 2019",
+  date: "june 7, 2019",
   content: [
     {
       header: "tl;dr",
