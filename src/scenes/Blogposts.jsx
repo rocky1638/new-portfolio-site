@@ -53,15 +53,65 @@ const ImageDiv = styled.div`
   }
 `
 
+const CategoryText = ({ value, select, categories, selectedCategory }) => {
+  const index = categories.findIndex(el => el === value)
+  const selected = index === selectedCategory
+
+  return <Text 
+    big 
+    style={{ 
+      cursor: "pointer",
+      margin: index === 0 ? "0 10px 0 0" : "0 10px",
+      color: selected ? '' : '#868888',
+    }}
+    onClick={() => select(index)}
+  >{ value }</Text>
+}
+
+const BlogTypeSelector = (props) => {
+  return (
+    <div style={{ display: "flex", alignItems: "center", marginBottom: "25px"}}>
+      <CategoryText value="all" {...props} />
+      <CategoryText value="projects" {...props} />
+      <CategoryText value="experience" {...props} />
+      <CategoryText value="other" {...props} />
+    </div>
+  )
+}
+
 class Blogposts extends React.Component { 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      categories: ["all", "projects", "experience", "other"],
+      selectedCategory: 0,
+    }
+  }
+
+  select = (index) => {
+    this.setState({ selectedCategory: index })
+  }
+
+  filter = el => {
+    const { category } = el
+
+    if (this.state.categories[this.state.selectedCategory] === "all") return true
+
+    return category === this.state.categories[this.state.selectedCategory]
+  }
+
   renderBlogCard = (blogpost, index) => {
     const { title, description, postname, thumbnail } = blogpost
 
       return (
-        <Link to={`/blog/${postname}`}>
+        <Link to={`/blog/${postname}`} key={index}>
           <BlogCardDiv>
             <ImageDiv>
-              <Image style={{ width: "auto", height: "100%" }} noMargin src={thumbnail} />
+              <Image 
+                style={{ width: "auto", height: "100%" }} 
+                noMargin 
+                src={thumbnail} />
             </ImageDiv>
             <div style={{ width: "100%" }}>
               <Text big block style={{ marginBottom: 0 }}>{title}</Text>
@@ -73,10 +123,16 @@ class Blogposts extends React.Component {
   }
 
   render() {
+    const { categories, selectedCategory } = this.state
     return (
       <BlogsDiv>
         <Text style={{ marginBottom: 30 }} block ginormous>blog</Text>
-        {blogPostOverview.map((blogpost, index) => this.renderBlogCard(blogpost, index))}
+        <BlogTypeSelector 
+          categories={categories} 
+          selectedCategory={selectedCategory} 
+          select={this.select}
+        />
+        {blogPostOverview.filter(this.filter).map((blogpost, index) => this.renderBlogCard(blogpost, index))}
       </BlogsDiv>
     )
   }
