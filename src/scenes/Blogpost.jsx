@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { trackWindowScroll } from 'react-lazy-load-image-component'
 import { Text, Image } from 'components'
 import { NotFound } from 'scenes'
 import blogPosts from 'blogposts'
@@ -52,9 +53,9 @@ const Code = ({ code, language }) =>
     </pre>
   </div>
 
-const BlogImage = ({ src, subtitle }) => (
+const BlogImage = ({ src, subtitle, scrollPosition }) => (
   <ImageDiv>
-    <Image src={src} />
+    <Image src={src} scrollPosition={scrollPosition} />
     { subtitle && <Text 
       style={{ marginBottom: 20 }}
       block 
@@ -67,6 +68,7 @@ const BlogImage = ({ src, subtitle }) => (
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
     const { code, header, body, image, language } = section
+    const { scrollPosition } = this.props
 
     if (header) {
       return <Header key={index}>{header}</Header> 
@@ -74,7 +76,7 @@ class Blogpost extends React.Component {
       return <Body key={index}>{body}</Body> 
     } else if (image) {
       const { src, subtitle } = image
-      return <BlogImage key={index} src={src} subtitle={subtitle} />
+      return <BlogImage key={index} src={src} subtitle={subtitle} scrollPosition={scrollPosition}/>
     } else if (code) {
       return <Code code={code} language={language} />
     }
@@ -100,4 +102,4 @@ class Blogpost extends React.Component {
   }
 }
 
-export default Blogpost
+export default trackWindowScroll(Blogpost)

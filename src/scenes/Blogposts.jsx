@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { trackWindowScroll } from 'react-lazy-load-image-component'
 import { Text, Image } from 'components'
 import blogPostOverview from '../blogPostOverview'
 
@@ -104,12 +105,14 @@ class Blogposts extends React.Component {
 
   renderBlogCard = (blogpost, index) => {
     const { title, description, postname, thumbnail } = blogpost
+    const { scrollPosition } = this.props
 
       return (
         <Link to={`/blog/${postname}`} key={index}>
           <BlogCardDiv>
             <ImageDiv>
               <Image 
+                scrollPosition={scrollPosition}
                 style={{ width: "auto", height: "100%" }} 
                 noMargin 
                 src={thumbnail} />
@@ -138,4 +141,4 @@ class Blogposts extends React.Component {
     )
   }
 }
-export default Blogposts
+export default trackWindowScroll(Blogposts)
