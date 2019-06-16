@@ -18,7 +18,7 @@ const blogPostOverview = [
     postname: 'consensys1',
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/consensys-logo.png",
     description: "an overview of my first coop experience",
-    category: "experience",
+    category: "exp",
   },
   {
     title: "sapling",
@@ -33,6 +33,13 @@ const blogPostOverview = [
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/fyg_thumbnail.jpg",
     description: "helping people find cool clothes close to home",
     category: "projects",
+  },
+  {
+    title: "calgary",
+    postname: "calgary",
+    thumbnail: "https://foodiy-beta.s3.amazonaws.com/calgary.jpg",
+    description: "a bunch of cool things to do in the heart of alberta",
+    category: "places",
   },
 ]
 

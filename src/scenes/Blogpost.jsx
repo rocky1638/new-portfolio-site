@@ -32,8 +32,8 @@ const Subtitle = ({ children }) =>
 const Date = ({ children }) => 
   <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
 
-const Header = ({ children }) =>
-  <Text header bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
+const Header = ({ children, id }) =>
+  <Text header id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
 
 const Body = ({ children }) =>
   <Text 

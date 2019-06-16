@@ -73,7 +73,8 @@ const BlogTypeSelector = (props) => {
     <div style={{ display: "flex", alignItems: "center", marginBottom: "25px"}}>
       <CategoryText value="all" {...props} />
       <CategoryText value="projects" {...props} />
-      <CategoryText value="experience" {...props} />
+      <CategoryText value="exp" {...props} />
+      <CategoryText value="places" {...props} />
       <CategoryText value="other" {...props} />
     </div>
   )
@@ -84,7 +85,7 @@ class Blogposts extends React.Component {
     super(props)
 
     this.state = {
-      categories: ["all", "projects", "experience", "other"],
+      categories: ["all", "projects", "exp", "places", "other"],
       selectedCategory: 0,
     }
   }
