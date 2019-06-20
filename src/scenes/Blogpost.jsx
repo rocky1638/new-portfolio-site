@@ -33,8 +33,15 @@ const Subtitle = ({ children }) =>
 const Date = ({ children }) => 
   <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
 
-const Header = ({ children, id }) =>
-  <Text header id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
+const Header = ({ children, id, sub = false }) => {
+  if (sub) {
+    return <Text gray4 header id={id} style={{ marginTop: 20, marginBottom: 15 }} block>{children}</Text>
+  }
+
+  return (
+    <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
+  )
+}
 
 const Body = ({ children }) =>
   <Text 
@@ -67,11 +74,11 @@ const BlogImage = ({ src, subtitle, scrollPosition }) => (
 
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { code, header, body, image, language } = section
+    const { code, header, sub, id, body, image, language } = section
     const { scrollPosition } = this.props
 
     if (header) {
-      return <Header key={index}>{header}</Header> 
+      return <Header id={id} sub={sub} key={index}>{header}</Header> 
     } else if (body) {
       return <Body key={index}>{body}</Body> 
     } else if (image) {

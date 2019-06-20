@@ -24,8 +24,8 @@ const StyledText = styled.span`
     font-size: ${props => props.description
       ? '14px' : props.ginormous 
         ? '40px' : props.huge 
-          ? '35px' : props.header
-            ? '20px' : props.big
+          ? '35px' : props.big
+            ? '22px' : props.header
               ? '18px' : props.small
                 ? '16px' : '16px'};
   };
