@@ -1,5 +1,12 @@
 const blogPostOverview = [
   {
+    title: "mrsa",
+    postname: 'mrsa',
+    thumbnail: "https://foodiy-beta.s3.amazonaws.com/mrsa.png",
+    description: "aka: “movie review sentiment analysis”",
+    category: "projects",
+  },
+  {
     title: "my coding setup",
     postname: 'codesetup',
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/vim.png",
