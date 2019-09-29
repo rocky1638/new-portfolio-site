@@ -10,7 +10,8 @@ const StyledText = styled.span`
         ? '60px': props.header
           ? '24px' : props.big
             ? '32px' : props.small
-              ? '18px' : '20px'};
+              ? '18px' : props.tiny
+                ? '12px' : '20px'};
   font-weight: ${props => props.fontWeight 
     ? props.fontWeight : props.bold
       ? 'bold' : 400};
@@ -27,7 +28,8 @@ const StyledText = styled.span`
           ? '35px' : props.big
             ? '22px' : props.header
               ? '18px' : props.small
-                ? '16px' : '16px'};
+                ? '16px' : props.tiny
+                  ? '12px' : '16px'};
   };
 `
 

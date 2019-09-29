@@ -3,7 +3,17 @@
   align-items: center !important;
 }
 
+.f-aib {
+  display: flex !important;
+  align-items: baseline !important;
+}
+
 .f-jcc {
   display: flex !important;
   justify-content: center !important;
+}
+
+.f-jcl {
+  display: flex !important;
+  justify-content: flex-start !important;
 }

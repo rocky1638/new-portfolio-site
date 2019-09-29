@@ -4,6 +4,61 @@ import { trackWindowScroll } from 'react-lazy-load-image-component'
 import { Text, Image } from 'components'
 import { NotFound } from 'scenes'
 import blogPosts from 'blogposts'
+import { FaExternalLinkAlt } from 'react-icons/fa'
+
+const StyledLinkIcon = styled(FaExternalLinkAlt)`
+  width: 12px;
+  margin-left: 15px;
+  margin-right: 3px;
+  color: ${({ theme }) => theme.gray8};
+
+  &:hover {
+    color ${({ theme }) => theme.gray5}
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 10px;
+  }
+`
+
+class LinkIcon extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showingText: false,
+    }
+  }
+  onMouseEnter = () => {
+    this.setState({ showingText: true }) 
+  }
+
+  onMouseLeave = () => {
+    this.setState({ showingText: false }) 
+  }
+
+  render() {
+    const { link } = this.props
+    const { showingText } = this.state
+    if (!link) {
+      return null
+    }
+
+    return (
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        <div className="f-aic" style={{ cursor: 'pointer' }}>
+          <StyledLinkIcon 
+            onMouseEnter={this.onMouseEnter} 
+            onMouseLeave={this.onMouseLeave} 
+          />
+          <Text tiny gray5 style={{ paddingTop: 2, transition: "0.5s", opacity: showingText ? "1" : "0"}}>
+            Open in Google Maps
+          </Text>
+        </div>
+      </a>
+    )
+  }
+}
 
 const ImageDiv = styled.div`
   height: 100%;
@@ -28,19 +83,30 @@ const Title = ({ children }) => (
 )
 
 const Subtitle = ({ children }) => 
-  <Text style={{ marginTop: -5}} big gray4 block>{children}</Text>
+  <Text style={{ marginTop: -5 }} big gray4 block>{children}</Text>
 
 const Date = ({ children }) => 
   <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
 
-const Header = ({ children, id, sub = false }) => {
+const Header = ({ children, id, sub = false, link }) => {
+  let component
   if (sub) {
-    return <Text gray4 header id={id} style={{ marginTop: 20, marginBottom: 15 }} block>{children}</Text>
+    component = <Text gray4 header id={id} style={{ marginTop: 20, marginBottom: 15 }} block>
+        {children}
+      </Text>
+  } else {
+    component = <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>
+        {children}
+      </Text>
   }
 
   return (
-    <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>{children}</Text>
+    <div className="f-aib f-jcl">
+      {component}
+      <LinkIcon link={link} />
+    </div>
   )
+
 }
 
 const Body = ({ children }) =>
@@ -74,11 +140,11 @@ const BlogImage = ({ src, subtitle, scrollPosition }) => (
 
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { code, header, sub, id, body, image, language } = section
+    const { code, header, sub, id, body, image, language, link } = section
     const { scrollPosition } = this.props
 
     if (header) {
-      return <Header id={id} sub={sub} key={index}>{header}</Header> 
+      return <Header id={id} sub={sub} link={link} key={index}>{header}</Header> 
     } else if (body) {
       return <Body key={index}>{body}</Body> 
     } else if (image) {

@@ -1,5 +1,19 @@
 const blogPostOverview = [
   {
+    title: "kitchenmate",
+    postname: "kitchenmate",
+    thumbnail: "https://foodiy-beta.s3.amazonaws.com/km.png",
+    description: "working at the junction of food and tech",
+    category: "exp"
+  },
+  {
+    title: "toronto",
+    postname: "toronto",
+    thumbnail: "https://foodiy-beta.s3.amazonaws.com/toronto.jpg",
+    description: "more than just drake and the raptors",
+    category: "places"
+  },
+  {
     title: "mrsa",
     postname: 'mrsa',
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/mrsa.png",

@@ -4,7 +4,9 @@ import consensys1 from './consensys1'
 import sapling from './sapling'
 import fyg from './fyg'
 import calgary from './calgary'
+import toronto from './toronto'
 import mrsa from './mrsa'
+import kitchenmate from './kitchenmate'
 
 const blogposts = {
   codesetup,
@@ -14,6 +16,8 @@ const blogposts = {
   fyg,
   calgary,
   mrsa,
+  kitchenmate,
+  toronto,
 }
 
 export default blogposts
