@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -50,14 +52,24 @@ a:visited {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.main-song-div {
+  width: 45vw;
+}
+
 @media screen and (max-width: 1180px) {
   .song-details {
     padding: 20px 15%;
+  }
+  .main-song-div {
+    width: 60vw;
   }
 }
 
 @media screen and (max-width: 768px) {
   .song-details {
     padding: 20px 5%;
+  }
+  .main-song-div {
+    width: 70vw;
   }
 }

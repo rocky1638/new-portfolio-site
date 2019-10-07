@@ -7,6 +7,39 @@ import { FaCaretUp, FaCaretDown } from 'react-icons/fa'
 import { Text, Button } from 'components'
 import SpotifyLogo from 'static/spotify.png'
 
+const OverflowDiv = styled.div`
+  box-sizing: content-box;
+
+  .ticker {
+    white-space: nowrap;
+    box-sizing: content-box;
+  }
+
+  &:hover {
+    cursor: default;
+
+    .ticker {
+      -webkit-animation-iteration-count: infinite; 
+              animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+              animation-timing-function: linear;
+     -webkit-animation-name: ticker;
+             animation-name: ticker;
+      -webkit-animation-duration: 10s;
+              animation-duration: 10s;
+      cursor: default;
+      padding-right: 100%;
+      display: inline-block;
+      height: 100%;
+
+      span {
+        display: inline-block;
+        padding-right: 2rem;
+      }
+    }
+  }
+`
+
 const AnimateDiv = posed.div({
   enter: {
     y: 0,
@@ -20,7 +53,7 @@ const AnimateDiv = posed.div({
   exit: {
     y: 50,
     opacity: 0,
-    transition: { duration: 150 }
+    transition: { duration: 300 }
   }
 });
 
@@ -58,6 +91,8 @@ const WavingSpotify = styled.img`
 
 const ResponsiveHomeDiv = styled.div`
   padding: 0 25%;
+  overflow-x: hidden;
+  width: 100vw;
 
   @media only screen and (max-width: 1180px) {
     padding: 0 15%;
@@ -98,8 +133,9 @@ class SpotifyWidget extends React.Component {
         <PoseGroup>
           <div key={1} style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
             <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
-            <Text>{song.name} —</Text>
-            <Text style={{ marginLeft: 5 }}>{song.artist['#text']}</Text>
+            <div className="main-song-div" style={{ overflow: "hidden" }}>
+              <Text style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>{song.name} —  {song.artist['#text']}</Text>
+            </div>
             <StyledUpCaret onClick={this.props.showDetails}/>
           </div>
         </PoseGroup>
@@ -113,9 +149,13 @@ class SpotifyWidget extends React.Component {
               src={song.image[song.image.length - 1]['#text']}
               alt="album cover"
               />
-            <div>
-              <div className='f-aic'>
-                <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
+            <div style={{ overflow: 'hidden' }}>
+              <div className="f-aic">
+                <OverflowDiv id="test">
+                  <div className="ticker">
+                    <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
+                  </div>
+                </OverflowDiv>
                 <StyledDownCaret onClick={this.props.hideDetails} />
               </div>
               <Text block header>{song.artist['#text']}</Text>
@@ -155,7 +195,7 @@ class Home extends React.Component {
   render() {
     const { showingDetails } = this.state
     return (
-      <div className="f-aic f-jcc fadeUp" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }}>
+      <div className="f-aic f-jcc fadeUp" style={{ overflowX: 'hidden', position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }}>
         <ResponsiveHomeDiv>
           <div style={{ transition: '0.3s', opacity: showingDetails ? '0.5' : '1' }}>
             <Text 
