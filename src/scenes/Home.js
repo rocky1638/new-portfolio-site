@@ -73,6 +73,12 @@ class SpotifyWidget extends React.Component {
 
   componentDidMount() {
     this.getSongData()
+    const pollSongInterval = setInterval(this.getSongData, 18000);
+    this.setState({ interval: pollSongInterval })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   getSongData = async() => {
@@ -107,6 +113,7 @@ class SpotifyWidget extends React.Component {
               }}
               key={2}
               className="f-aic spotify-closed-widget">
+              <img src={song.image[song.image.length - 1]['#text']} alt="preload" style={{ height: 0 }} />
               <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
               <div>
                 <Text block big gray6>Now Playing:</Text>
