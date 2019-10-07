@@ -149,7 +149,7 @@ class SpotifyWidget extends React.Component {
                     <Text block header>{song.artist['#text']}</Text>
                     <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
                     { (moreSong && moreSong.external_urls) && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
-                      <div style={{ marginTop: 5 }} className="f-aic">
+                      <div style={{ marginTop: 7 }} className="f-aic">
                         <Text small>Open in Spotify</Text>
                         <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
                       </div>
