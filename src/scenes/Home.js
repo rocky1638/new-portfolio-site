@@ -110,12 +110,12 @@ class SpotifyWidget extends React.Component {
             </div>
             <Text block header>{song.artist['#text']}</Text>
             <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
-            <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
+            { moreSong.external_urls && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
               <div style={{ marginTop: 5 }} className="f-aic">
                 <Text small>Open in Spotify</Text>
                 <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
               </div>
-            </a>
+            </a>}
           </div>
         </SongDetailsDiv>
       )
@@ -144,7 +144,7 @@ class Home extends React.Component {
   render() {
     const { showingDetails } = this.state
     return (
-      <div className="f-aic f-jcc fadeUp" style={{ height: '100vh' }}>
+      <div className="f-aic f-jcc fadeUp" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }}>
         <ResponsiveHomeDiv>
           <div style={{ transition: '0.3s', opacity: showingDetails ? '0.5' : '1' }}>
             <Text 
