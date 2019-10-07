@@ -2,15 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import posed, { PoseGroup } from 'react-pose';
+import OutsideClickHandler from 'react-outside-click-handler'
+import { motion, AnimatePresence } from "framer-motion"
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa'
 import { Text, Button } from 'components'
 import SpotifyLogo from 'static/spotify.png'
 
 const OverflowDiv = styled.div`
   box-sizing: content-box;
+  overflow: hidden;
 
   .ticker {
+    padding: 3px 0;
     white-space: nowrap;
     box-sizing: content-box;
   }
@@ -40,23 +43,6 @@ const OverflowDiv = styled.div`
   }
 `
 
-const AnimateDiv = posed.div({
-  enter: {
-    y: 0,
-    opacity: 1,
-    delay: 150,
-    transition: {
-      y: { type: 'spring', stiffness: 800, damping: 15 },
-      default: { duration: 300 }
-    }
-  },
-  exit: {
-    y: 50,
-    opacity: 0,
-    transition: { duration: 300 }
-  }
-});
-
 const StyledUpCaret = styled(FaCaretUp)`
   margin-left: 8px;
   color: #868888;
@@ -73,7 +59,7 @@ const StyledDownCaret = styled(FaCaretDown)`
   color: #868888;
   font-size: 18px;
   cursor: pointer;
-  marginLeft: 5px;
+  margin-left: 3px;
 
   &:hover {
     transform: scale(1.1);
@@ -128,76 +114,106 @@ class SpotifyWidget extends React.Component {
   render() {
     const { song, moreSong } = this.state
     const { showingDetails } = this.props
-    if (song && !showingDetails) {
-      return (
-        <PoseGroup>
-          <div key={1} style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
-            <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
-            <div className="main-song-div" style={{ overflow: "hidden" }}>
-              <Text style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>{song.name} —  {song.artist['#text']}</Text>
-            </div>
-            <StyledUpCaret onClick={this.props.showDetails}/>
-          </div>
-        </PoseGroup>
-      )
-    } else if (song && showingDetails) {
-      return (
-        <PoseGroup>
-          <AnimateDiv key={2} className="song-details">
-            <img
-              style={{ width: '40%', maxWidth: 250, marginRight: 15, alignSelf: 'center' }}
-              src={song.image[song.image.length - 1]['#text']}
-              alt="album cover"
-              />
-            <div style={{ overflow: 'hidden' }}>
-              <div className="f-aic">
-                <OverflowDiv id="test">
-                  <div className="ticker">
-                    <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
-                  </div>
-                </OverflowDiv>
-                <StyledDownCaret onClick={this.props.hideDetails} />
+    
+    return (
+      <AnimatePresence>
+        <React.Fragment key={1}>
+          {(song && !showingDetails) &&
+            <motion.div key={2} style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
+              <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
+              <div
+                initial={{
+                  y: 100,
+                  opacity: 0
+                }}
+                transition={{ duration: 0.4 }} 
+                animate={{ 
+                  y: 0,
+                  opacity: 1
+                }}
+                exit={{
+                  y: 100,
+                  opacity: 0
+                }}
+                className="main-song-div" style={{ overflow: "hidden" }}>
+                <Text style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>{song.name} —  {song.artist['#text']}</Text>
               </div>
-              <Text block header>{song.artist['#text']}</Text>
-              <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
-              { moreSong.external_urls && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
-                <div style={{ marginTop: 5 }} className="f-aic">
-                  <Text small>Open in Spotify</Text>
-                  <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
-                </div>
-              </a>}
-            </div>
-          </AnimateDiv>
-        </PoseGroup>
-      )
-    }
-    return null
+              <StyledUpCaret onClick={this.props.showDetails}/>
+            </motion.div>
+          }
+          {(song && showingDetails) &&
+            <OutsideClickHandler key={3} onOutsideClick={this.props.hideDetails}>
+                <motion.div 
+                  initial={{
+                    y: 100,
+                    opacity: 0
+                  }}
+                  transition={{ duration: 0.4 }} 
+                  animate={{ 
+                    y: 0,
+                    opacity: 1
+                  }}
+                  exit={{
+                    y: 100,
+                    opacity: 0
+                  }}
+                  className="song-details">
+                  <img
+                    style={{ width: '40%', maxWidth: 250, marginRight: 15, alignSelf: 'center' }}
+                    src={song.image[song.image.length - 1]['#text']}
+                    alt="album cover"
+                    />
+                  <div style={{ overflow: 'hidden' }}>
+                    <div className="f-aic">
+                      <OverflowDiv>
+                        <div className="ticker">
+                          <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
+                        </div>
+                      </OverflowDiv>
+                      <StyledDownCaret onClick={this.props.hideDetails} />
+                    </div>
+                    <Text block header>{song.artist['#text']}</Text>
+                    <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
+                    { (moreSong && moreSong.external_urls) && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
+                      <div style={{ marginTop: 5 }} className="f-aic">
+                        <Text small>Open in Spotify</Text>
+                        <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
+                      </div>
+                    </a>}
+                  </div>
+                </motion.div>
+            </OutsideClickHandler>
+          }
+        </React.Fragment>
+      </AnimatePresence>
+    )
   }
 }
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props)
+    class Home extends React.Component {
+      constructor(props) {
+        super(props)
 
-    this.state = {
-      showingDetails: false
-    }
-  }
+        this.state = {
+          showingDetails: false
+        }
+      }
 
-  showDetails = () => {
-    this.setState({ showingDetails: true })
-  }
+      showDetails = () => {
+        this.setState({ showingDetails: true })
+      }
 
-  hideDetails = () => {
-    this.setState({ showingDetails: false })
-  }
+      hideDetails = () => {
+        this.setState({ showingDetails: false })
+        this.forceUpdate()
+      }
 
   render() {
     const { showingDetails } = this.state
     return (
       <div className="f-aic f-jcc fadeUp" style={{ overflowX: 'hidden', position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }}>
         <ResponsiveHomeDiv>
-          <div style={{ transition: '0.3s', opacity: showingDetails ? '0.5' : '1' }}>
+          <div style={{ transition: '0.4s', opacity: showingDetails ? '0.5' : '1' }}>
             <Text 
               style={{ marginBottom: 15 }}
               block 
@@ -221,13 +237,13 @@ class Home extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button>Resumé</Button>
+                <Button style={{ marginBottom: 10 }}>Resumé</Button>
               </a>
               <Link to="/blog">
-                <Button>Blog</Button>
+                <Button style={{ marginBottom: 10 }}>Blog</Button>
               </Link>
               <a href="https://github.com/rocky1638" target="_blank" rel="noopener noreferrer">
-              <Button>
+              <Button style={{ marginBottom: 10 }}>
                 Github
               </Button>
             </a>
