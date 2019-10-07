@@ -30,6 +30,20 @@ const data = {
         subtitle: "the fried chicken burger",
       },
     },
+    {
+      header: "farm'r",
+      sub: true,
+      link: "https://g.page/FarmrCA?share"
+    },
+    {
+      body: "This restaurant offers build-your-own entrees for around 18 dollars - choose one protein from a list including chicken and beef brisket, as well as two healthy sides, ranging from quinoa salad to roasted brocolli and potatoes."
+    },
+    {
+      image: {
+        src: "https://lh5.googleusercontent.com/p/AF1QipM7PIkDtwprHlbYhEGRGB6dDV2CuA_JNkGIghg2=w1200-h642-p-k-no",
+        subtitle: "the beef brisket",
+      },
+    },
   ]
 }
 
