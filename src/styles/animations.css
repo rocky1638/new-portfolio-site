@@ -113,6 +113,40 @@
     visibility: visible;
 }
 
+.fadeUpFast {
+      -webkit-animation-name: fadeUp;
+    -moz-animation-name: fadeUp;
+    -ms-animation-name: fadeUp;
+    -o-animation-name: fadeUp;
+    animation-name: fadeUp;
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    -ms-animation-duration: 0.4s;
+    -o-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -ms-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -ms-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    /*-webkit-animation-delay: .5s;*/
+    /*-moz-animation-delay: .5s;*/
+    /*-ms-animation-delay: .5s;*/
+    /*-o-animation-delay: .5s;*/
+    /*animation-delay: .5s;*/
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -ms-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    visibility: visible;
+}
+
 @keyframes wave-animation {
     0% { transform: rotate(  0.0deg) }
    10% { transform: rotate(-10.0deg) }

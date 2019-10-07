@@ -2,24 +2,27 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Text, Button } from 'components'
+import posed, { PoseGroup } from 'react-pose';
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa'
+import { Text, Button } from 'components'
 import SpotifyLogo from 'static/spotify.png'
 
-const SongDetailsDiv = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  display: flex;
-  background-color: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-  @media only screen and (min-width: 768px) {
-    padding: 20px 20%;
+const AnimateDiv = posed.div({
+  enter: {
+    y: 0,
+    opacity: 1,
+    delay: 150,
+    transition: {
+      y: { type: 'spring', stiffness: 800, damping: 15 },
+      default: { duration: 300 }
+    }
+  },
+  exit: {
+    y: 50,
+    opacity: 0,
+    transition: { duration: 150 }
   }
-`
+});
 
 const StyledUpCaret = styled(FaCaretUp)`
   margin-left: 8px;
@@ -56,6 +59,10 @@ const WavingSpotify = styled.img`
 const ResponsiveHomeDiv = styled.div`
   padding: 0 25%;
 
+  @media only screen and (max-width: 1180px) {
+    padding: 0 15%;
+  }
+
   @media only screen and  (max-width: 768px) {
     padding: 0 5%;
   }
@@ -88,36 +95,40 @@ class SpotifyWidget extends React.Component {
     const { showingDetails } = this.props
     if (song && !showingDetails) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
-          <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
-          <Text>{song.name} —</Text>
-          <Text style={{ marginLeft: 5 }}>{song.artist['#text']}</Text>
-          <StyledUpCaret onClick={this.props.showDetails}/>
-        </div>
+        <PoseGroup>
+          <div key={1} style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
+            <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
+            <Text>{song.name} —</Text>
+            <Text style={{ marginLeft: 5 }}>{song.artist['#text']}</Text>
+            <StyledUpCaret onClick={this.props.showDetails}/>
+          </div>
+        </PoseGroup>
       )
     } else if (song && showingDetails) {
       return (
-        <SongDetailsDiv>
-          <img
-            style={{ width: '40%', maxWidth: 250, marginRight: 15 }}
-            src={song.image[song.image.length - 1]['#text']}
-            alt="album cover"
-            />
-          <div>
-            <div className='f-aic'>
-              <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
-              <StyledDownCaret onClick={this.props.hideDetails} />
-            </div>
-            <Text block header>{song.artist['#text']}</Text>
-            <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
-            { moreSong.external_urls && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
-              <div style={{ marginTop: 5 }} className="f-aic">
-                <Text small>Open in Spotify</Text>
-                <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
+        <PoseGroup>
+          <AnimateDiv key={2} className="song-details">
+            <img
+              style={{ width: '40%', maxWidth: 250, marginRight: 15, alignSelf: 'center' }}
+              src={song.image[song.image.length - 1]['#text']}
+              alt="album cover"
+              />
+            <div>
+              <div className='f-aic'>
+                <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
+                <StyledDownCaret onClick={this.props.hideDetails} />
               </div>
-            </a>}
-          </div>
-        </SongDetailsDiv>
+              <Text block header>{song.artist['#text']}</Text>
+              <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
+              { moreSong.external_urls && <a href={moreSong.external_urls.spotify} target='_blank' rel='noopener noreferrer'>
+                <div style={{ marginTop: 5 }} className="f-aic">
+                  <Text small>Open in Spotify</Text>
+                  <img style={{ width: 15, marginLeft: 5 }} src={SpotifyLogo} alt="spotify logo" />
+                </div>
+              </a>}
+            </div>
+          </AnimateDiv>
+        </PoseGroup>
       )
     }
     return null

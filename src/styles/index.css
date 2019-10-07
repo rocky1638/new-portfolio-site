@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,4 +36,28 @@ a {
 
 a:visited {
   color: #44CBFF;
+}
+
+/** For Animations **/
+.song-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 25%;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@media screen and (max-width: 1180px) {
+  .song-details {
+    padding: 20px 15%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .song-details {
+    padding: 20px 5%;
+  }
 }
