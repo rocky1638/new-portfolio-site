@@ -56,8 +56,23 @@ a:visited {
   width: 45vw;
 }
 
+.spotify-closed-widget {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 20px 25%;
+  border-radius: 5px;
+}
+
+.spotify-closed-widget:hover {
+  background-color: #F1F1F1;
+  transition: 0.3s;
+}
+
 @media screen and (max-width: 1180px) {
-  .song-details {
+  .song-details, .spotify-closed-widget {
     padding: 20px 15%;
   }
   .main-song-div {
@@ -66,7 +81,7 @@ a:visited {
 }
 
 @media screen and (max-width: 768px) {
-  .song-details {
+  .song-details, .spotify-closed-widget {
     padding: 20px 5%;
   }
   .main-song-div {

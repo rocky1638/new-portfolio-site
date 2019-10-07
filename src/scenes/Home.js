@@ -4,7 +4,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import OutsideClickHandler from 'react-outside-click-handler'
 import { motion, AnimatePresence } from "framer-motion"
-import { FaCaretUp, FaCaretDown } from 'react-icons/fa'
 import { Text, Button } from 'components'
 import SpotifyLogo from 'static/spotify.png'
 
@@ -40,30 +39,6 @@ const OverflowDiv = styled.div`
         padding-right: 2rem;
       }
     }
-  }
-`
-
-const StyledUpCaret = styled(FaCaretUp)`
-  margin-left: 8px;
-  color: #868888;
-  font-size: 16px;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
-  }
-`
-
-const StyledDownCaret = styled(FaCaretDown)`
-  color: #868888;
-  font-size: 18px;
-  cursor: pointer;
-  margin-left: 3px;
-
-  &:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
   }
 `
 
@@ -119,26 +94,26 @@ class SpotifyWidget extends React.Component {
       <AnimatePresence>
         <React.Fragment key={1}>
           {(song && !showingDetails) &&
-            <motion.div key={2} style={{ display: 'flex', alignItems: 'center', position: 'absolute', bottom: 20 }}>
+            <motion.div 
+              onClick={this.props.showDetails}
+              initial={{
+                y: -100,
+                opacity: 0
+              }}
+              transition={{ duration: 0.4 }} 
+              animate={{ 
+                y: 0,
+                opacity: 1
+              }}
+              key={2}
+              className="f-aic spotify-closed-widget">
               <WavingSpotify style={{ width: 35, marginRight: 15 }} src={SpotifyLogo} alt="spotify" />
-              <div
-                initial={{
-                  y: 100,
-                  opacity: 0
-                }}
-                transition={{ duration: 0.4 }} 
-                animate={{ 
-                  y: 0,
-                  opacity: 1
-                }}
-                exit={{
-                  y: 100,
-                  opacity: 0
-                }}
-                className="main-song-div" style={{ overflow: "hidden" }}>
-                <Text style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>{song.name} —  {song.artist['#text']}</Text>
+              <div>
+                <Text block big gray6>Now Playing:</Text>
+                <div className="main-song-div" style={{ overflow: "hidden" }}>
+                  <Text style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>{song.name} —  {song.artist['#text']}</Text>
+                </div>
               </div>
-              <StyledUpCaret onClick={this.props.showDetails}/>
             </motion.div>
           }
           {(song && showingDetails) &&
@@ -170,7 +145,6 @@ class SpotifyWidget extends React.Component {
                           <Text style={{ lineHeight: 1.1 }} block bold big>{song.name}</Text>
                         </div>
                       </OverflowDiv>
-                      <StyledDownCaret onClick={this.props.hideDetails} />
                     </div>
                     <Text block header>{song.artist['#text']}</Text>
                     <Text block gray4 style={{ lineHeight: 1.3, marginBottom: 5 }}>{song.album['#text']}</Text>
@@ -213,9 +187,9 @@ class SpotifyWidget extends React.Component {
     return (
       <div className="f-aic f-jcc fadeUp" style={{ overflowX: 'hidden', position: 'absolute', top: 0, bottom: 0, right: 0, left: 0 }}>
         <ResponsiveHomeDiv>
-          <div style={{ transition: '0.4s', opacity: showingDetails ? '0.5' : '1' }}>
+          <div style={{ marginTop: '-15px', transition: '0.4s', opacity: showingDetails ? '0.5' : '1' }}>
             <Text 
-              style={{ marginBottom: 15 }}
+              style={{ marginBottom: 15, padding: '5px 0px' }}
               block 
               fontWeight={500} 
               ginormous>
@@ -237,13 +211,13 @@ class SpotifyWidget extends React.Component {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button style={{ marginBottom: 10 }}>Resumé</Button>
+                <Button disabled={showingDetails} style={{ marginBottom: 10 }}>Resumé</Button>
               </a>
               <Link to="/blog">
-                <Button style={{ marginBottom: 10 }}>Blog</Button>
+                <Button disabled={showingDetails} style={{ marginBottom: 10 }}>Blog</Button>
               </Link>
               <a href="https://github.com/rocky1638" target="_blank" rel="noopener noreferrer">
-              <Button style={{ marginBottom: 10 }}>
+              <Button disabled={showingDetails} style={{ marginBottom: 10 }}>
                 Github
               </Button>
             </a>
