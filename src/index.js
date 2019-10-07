@@ -11,6 +11,9 @@ import * as serviceWorker from './serviceWorker';
 
 // code highlighting in code blocks
 hljs.initHighlightingOnLoad();
+if ('ontouchstart' in document.documentElement) {
+  document.body.style.cursor = 'pointer'
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
