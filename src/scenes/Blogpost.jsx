@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { trackWindowScroll } from 'react-lazy-load-image-component'
-import { Text, Image } from 'components'
-import { NotFound } from 'scenes'
-import blogPosts from 'blogposts'
-import { FaExternalLinkAlt } from 'react-icons/fa'
+import React from "react";
+import styled from "styled-components";
+import { trackWindowScroll } from "react-lazy-load-image-component";
+import { Text, Image } from "components";
+import { NotFound } from "scenes";
+import blogPosts from "blogposts";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const StyledLinkIcon = styled(FaExternalLinkAlt)`
   width: 12px;
@@ -19,44 +19,52 @@ const StyledLinkIcon = styled(FaExternalLinkAlt)`
   @media only screen and (max-width: 768px) {
     margin-left: 10px;
   }
-`
+`;
 
 class LinkIcon extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      showingText: false,
-    }
+      showingText: false
+    };
   }
   onMouseEnter = () => {
-    this.setState({ showingText: true }) 
-  }
+    this.setState({ showingText: true });
+  };
 
   onMouseLeave = () => {
-    this.setState({ showingText: false }) 
-  }
+    this.setState({ showingText: false });
+  };
 
   render() {
-    const { link } = this.props
-    const { showingText } = this.state
+    const { link } = this.props;
+    const { showingText } = this.state;
     if (!link) {
-      return null
+      return null;
     }
 
     return (
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <div className="f-aic" style={{ cursor: 'pointer' }}>
-          <StyledLinkIcon 
-            onMouseEnter={this.onMouseEnter} 
-            onMouseLeave={this.onMouseLeave} 
+        <div className="f-aic" style={{ cursor: "pointer" }}>
+          <StyledLinkIcon
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
           />
-          <Text tiny gray5 style={{ paddingTop: 2, transition: "0.5s", opacity: showingText ? "1" : "0"}}>
+          <Text
+            tiny
+            gray5
+            style={{
+              paddingTop: 2,
+              transition: "0.5s",
+              opacity: showingText ? "1" : "0"
+            }}
+          >
             Open in Google Maps
           </Text>
         </div>
       </a>
-    )
+    );
   }
 }
 
@@ -64,7 +72,7 @@ const ImageDiv = styled.div`
   height: 100%;
   width: 100%;
   text-align: center;
-`
+`;
 
 const BlogDiv = styled.div`
   padding: 30px 25%;
@@ -76,28 +84,46 @@ const BlogDiv = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 30px 20px;
   }
-`
+`;
 
 const Title = ({ children }) => (
-    <Text huge style={{ marginRight: 5 }}>{children}</Text>
-)
+  <Text huge style={{ marginRight: 5 }}>
+    {children}
+  </Text>
+);
 
-const Subtitle = ({ children }) => 
-  <Text style={{ marginTop: -5 }} big gray4 block>{children}</Text>
+const Subtitle = ({ children }) => (
+  <Text style={{ marginTop: -5 }} big gray4 block>
+    {children}
+  </Text>
+);
 
-const Date = ({ children }) => 
-  <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>- {children} -</Text>
+const Date = ({ children }) => (
+  <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>
+    - {children} -
+  </Text>
+);
 
 const Header = ({ children, id, sub = false, link }) => {
-  let component
+  let component;
   if (sub) {
-    component = <Text gray4 header id={id} style={{ marginTop: 20, marginBottom: 15 }} block>
+    component = (
+      <Text
+        gray4
+        header
+        id={id}
+        style={{ marginTop: 20, marginBottom: 15 }}
+        block
+      >
         {children}
       </Text>
+    );
   } else {
-    component = <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>
+    component = (
+      <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>
         {children}
       </Text>
+    );
   }
 
   return (
@@ -105,64 +131,77 @@ const Header = ({ children, id, sub = false, link }) => {
       {component}
       <LinkIcon link={link} />
     </div>
-  )
+  );
+};
 
-}
-
-const Body = ({ children }) =>
-  <Text 
+const Body = ({ children }) => (
+  <Text
     dangerouslySetInnerHTML={{ __html: children }}
-    small 
+    small
     block
-    book 
-    style={{ marginBottom: 21 }}>
-  </Text>
+    book
+    style={{ marginBottom: 21 }}
+  />
+);
 
-const Code = ({ code, language }) =>
+const Code = ({ code, language }) => (
   <div style={{ width: "100%", margin: "30px 0" }}>
     <pre>
-    <code dangerouslySetInnerHTML={{ __html: code }}
-      className={`code-block ${language}`} />
+      <code
+        dangerouslySetInnerHTML={{ __html: code }}
+        className={`code-block ${language}`}
+      />
     </pre>
   </div>
+);
 
 const BlogImage = ({ src, subtitle, scrollPosition }) => (
   <ImageDiv>
     <Image src={src} scrollPosition={scrollPosition} />
-    { subtitle && <Text 
-      style={{ marginBottom: 20 }}
-      block 
-      book 
-      gray8 
-      small>{subtitle}</Text> }
+    {subtitle && (
+      <Text style={{ marginBottom: 20 }} block book gray8 small>
+        {subtitle}
+      </Text>
+    )}
   </ImageDiv>
-)
+);
 
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { code, header, sub, id, body, image, language, link } = section
-    const { scrollPosition } = this.props
+    const { code, header, sub, id, body, image, language, link } = section;
+    const { scrollPosition } = this.props;
 
     if (header) {
-      return <Header id={id} sub={sub} link={link} key={index}>{header}</Header> 
+      return (
+        <Header id={id} sub={sub} link={link} key={index}>
+          {header}
+        </Header>
+      );
     } else if (body) {
-      return <Body key={index}>{body}</Body> 
+      return <Body key={index}>{body}</Body>;
     } else if (image) {
-      const { src, subtitle } = image
-      return <BlogImage key={index} src={src} subtitle={subtitle} scrollPosition={scrollPosition}/>
+      const { src, subtitle } = image;
+      return (
+        <BlogImage
+          key={index}
+          src={src}
+          subtitle={subtitle}
+          scrollPosition={scrollPosition}
+        />
+      );
     } else if (code) {
-      return <Code code={code} language={language} />
+      return <Code code={code} language={language} />;
     }
-  }
+  };
 
   render() {
-    const data = blogPosts[this.props.match.params.postname]
+    const data = blogPosts[this.props.match.params.postname];
 
     if (!data) {
-      return <NotFound />
+      return <NotFound />;
     }
 
-    const { date, title, subtitle, content } = data
+    const { date, title, subtitle, content } = data;
 
     return (
       <BlogDiv>
@@ -171,8 +210,8 @@ class Blogpost extends React.Component {
         <Date>{date}</Date>
         {content.map((section, index) => this.renderSection(section, index))}
       </BlogDiv>
-    )
+    );
   }
 }
 
-export default trackWindowScroll(Blogpost)
+export default trackWindowScroll(Blogpost);

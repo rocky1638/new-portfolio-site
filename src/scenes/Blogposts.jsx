@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { trackWindowScroll } from 'react-lazy-load-image-component'
-import { Text, Image } from 'components'
-import blogPostOverview from '../blogPostOverview'
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { trackWindowScroll } from "react-lazy-load-image-component";
+import { Text, Image } from "components";
+import blogPostOverview from "../blogPostOverview";
 
 const BlogsDiv = styled.div`
   padding: 30px 25%;
@@ -19,11 +19,11 @@ const BlogsDiv = styled.div`
   @media only screen and (max-width: 480px) {
     padding: 30px 20px;
   }
-`
+`;
 
 const BlogCardDiv = styled.div`
   display: flex;
-  align-items:center;
+  align-items: center;
   width: 100%;
   height: 100px;
   margin-bottom: 20px;
@@ -39,7 +39,7 @@ const BlogCardDiv = styled.div`
   @media only screen and (max-width: 480px) {
     margin-bottom: 5px;
   }
-`
+`;
 
 const ImageDiv = styled.div`
   height: 100%;
@@ -52,93 +52,109 @@ const ImageDiv = styled.div`
   @media only screen and (max-width: 480px) {
     margin-right: 10px;
   }
-`
+`;
 
 const CategoryText = ({ value, select, categories, selectedCategory }) => {
-  const index = categories.findIndex(el => el === value)
-  const selected = index === selectedCategory
+  const index = categories.findIndex(el => el === value);
+  const selected = index === selectedCategory;
 
-  return <Text 
-    big 
-    style={{ 
-      cursor: "pointer",
-      margin: index === 0 ? "0 10px 0 0" : "0 10px",
-      color: selected ? '' : '#868888',
-    }}
-    onClick={() => select(index)}
-  >{ value }</Text>
-}
-
-const BlogTypeSelector = (props) => {
   return (
-    <div style={{ display: "flex", alignItems: "center", marginBottom: "25px"}}>
+    <Text
+      big
+      style={{
+        cursor: "pointer",
+        margin: index === 0 ? "0 10px 0 0" : "0 10px",
+        color: selected ? "" : "#868888"
+      }}
+      onClick={() => select(index)}
+    >
+      {value}
+    </Text>
+  );
+};
+
+const BlogTypeSelector = props => {
+  return (
+    <div
+      style={{ display: "flex", alignItems: "center", marginBottom: "25px" }}
+    >
       <CategoryText value="all" {...props} />
       <CategoryText value="projects" {...props} />
       <CategoryText value="exp" {...props} />
       <CategoryText value="places" {...props} />
       <CategoryText value="other" {...props} />
     </div>
-  )
-}
+  );
+};
 
-class Blogposts extends React.Component { 
+class Blogposts extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       categories: ["all", "projects", "exp", "places", "other"],
-      selectedCategory: 0,
-    }
+      selectedCategory: 0
+    };
   }
 
-  select = (index) => {
-    this.setState({ selectedCategory: index })
-  }
+  select = index => {
+    this.setState({ selectedCategory: index });
+  };
 
   filter = el => {
-    const { category } = el
+    const { category } = el;
 
-    if (this.state.categories[this.state.selectedCategory] === "all") return true
+    if (this.state.categories[this.state.selectedCategory] === "all")
+      return true;
 
-    return category === this.state.categories[this.state.selectedCategory]
-  }
+    return category === this.state.categories[this.state.selectedCategory];
+  };
 
   renderBlogCard = (blogpost, index) => {
-    const { title, description, postname, thumbnail } = blogpost
-    const { scrollPosition } = this.props
+    const { title, description, postname, thumbnail } = blogpost;
+    const { scrollPosition } = this.props;
 
-      return (
-        <Link to={`/blog/${postname}`} key={index}>
-          <BlogCardDiv>
-            <ImageDiv>
-              <Image 
-                scrollPosition={scrollPosition}
-                style={{ width: "auto", height: "100%" }} 
-                noMargin 
-                src={thumbnail} />
-            </ImageDiv>
-            <div style={{ width: "100%" }}>
-              <Text big block style={{ marginBottom: 0 }}>{title}</Text>
-              <Text gray4 description block>{description}</Text>
-            </div>
-          </BlogCardDiv>
-        </Link>
-      )
-  }
+    return (
+      <Link to={`/blog/${postname}`} key={index}>
+        <BlogCardDiv>
+          <ImageDiv>
+            <Image
+              scrollPosition={scrollPosition}
+              style={{ width: "auto", height: "100%" }}
+              noMargin
+              src={thumbnail}
+            />
+          </ImageDiv>
+          <div style={{ width: "100%" }}>
+            <Text big block style={{ marginBottom: 0 }}>
+              {title}
+            </Text>
+            <Text gray4 description block>
+              {description}
+            </Text>
+          </div>
+        </BlogCardDiv>
+      </Link>
+    );
+  };
 
   render() {
-    const { categories, selectedCategory } = this.state
+    const { categories, selectedCategory } = this.state;
     return (
       <BlogsDiv>
-        <Text style={{ marginBottom: 30 }} block ginormous>blog</Text>
-        <BlogTypeSelector 
-          categories={categories} 
-          selectedCategory={selectedCategory} 
+        <Text style={{ marginBottom: 30 }} block ginormous>
+          blog
+        </Text>
+        <BlogTypeSelector
+          categories={categories}
+          selectedCategory={selectedCategory}
           select={this.select}
         />
-        {blogPostOverview.filter(this.filter).map((blogpost, index) => this.renderBlogCard(blogpost, index))}
+        {blogPostOverview
+          .filter(this.filter)
+          .map((blogpost, index) => this.renderBlogCard(blogpost, index))}
       </BlogsDiv>
-    )
+    );
   }
 }
-export default trackWindowScroll(Blogposts)
+export default trackWindowScroll(Blogposts);
