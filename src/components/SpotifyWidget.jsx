@@ -192,7 +192,6 @@ class SpotifyWidget extends React.Component {
                       </div>
                     </a>
                   )}
-                  )
                 </div>
               </motion.div>
             </OutsideClickHandler>
