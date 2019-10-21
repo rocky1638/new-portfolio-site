@@ -34,11 +34,6 @@ const Grid = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-    grid-template-columns: 1fr;
-
-    img {
-      width: 100vw;
-    }
   }
 `;
 
@@ -47,7 +42,7 @@ class Books extends React.Component {
     return books.map(book => {
       return (
         <Link to={`/books/${book.title}`}>
-          <Image style={{ cursor: "pointer" }} src={book.image} />
+          <Image noMargin style={{ cursor: "pointer" }} src={book.image} />
         </Link>
       );
     });
@@ -56,7 +51,9 @@ class Books extends React.Component {
   render() {
     return (
       <BooksDiv>
-        <Text huge>Books</Text>
+        <Text huge block style={{ marginBottom: 20 }}>
+          Books
+        </Text>
         <Grid>{this.renderBooks()}</Grid>
       </BooksDiv>
     );

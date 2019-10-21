@@ -1,5 +1,5 @@
 const data = {
-  title: "How to Win Friends...",
+  title: "How to Win Friends",
   subtitle: "...and influence people",
   by: "Dale Carnegie",
   content: [
