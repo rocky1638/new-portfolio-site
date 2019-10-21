@@ -4,6 +4,7 @@ import { trackWindowScroll } from "react-lazy-load-image-component";
 import { Text, Image } from "components";
 import { NotFound } from "scenes";
 import blogPosts from "blogposts";
+import books from "books";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const StyledLinkIcon = styled(FaExternalLinkAlt)`
@@ -83,6 +84,21 @@ const BlogDiv = styled.div`
 
   @media only screen and (max-width: 768px) {
     padding: 30px 20px;
+  }
+`;
+
+const QuoteDiv = styled.div`
+  margin: 20px 0px;
+  background-color: #eeeeee;
+  padding: 20px 30px;
+  border-radius: 3px;
+
+  @media only screen and (max-width: 480px) {
+    margin: 15px 0px;
+    text-align: center;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0px;
   }
 `;
 
@@ -166,9 +182,27 @@ const BlogImage = ({ src, subtitle, scrollPosition }) => (
   </ImageDiv>
 );
 
+const BlockQuote = ({ quote }) => (
+  <QuoteDiv>
+    <Text description italic>
+      {quote}
+    </Text>
+  </QuoteDiv>
+);
+
 class Blogpost extends React.Component {
   renderSection = (section, index) => {
-    const { code, header, sub, id, body, image, language, link } = section;
+    const {
+      code,
+      blockquote,
+      header,
+      sub,
+      id,
+      body,
+      image,
+      language,
+      link
+    } = section;
     const { scrollPosition } = this.props;
 
     if (header) {
@@ -191,23 +225,29 @@ class Blogpost extends React.Component {
       );
     } else if (code) {
       return <Code code={code} language={language} />;
+    } else if (blockquote) {
+      return <BlockQuote quote={blockquote} />;
     }
   };
 
   render() {
-    const data = blogPosts[this.props.match.params.postname];
+    let data = blogPosts[this.props.match.params.postname];
+
+    if (!data) {
+      data = books[this.props.match.params.postname];
+    }
 
     if (!data) {
       return <NotFound />;
     }
 
-    const { date, title, subtitle, content } = data;
+    const { date, by, title, subtitle, content } = data;
 
     return (
       <BlogDiv>
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
-        <Date>{date}</Date>
+        <Date>{date || by}</Date>
         {content.map((section, index) => this.renderSection(section, index))}
       </BlogDiv>
     );
