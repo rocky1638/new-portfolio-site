@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledText = styled.span`
-  font-style: ${props => (props.italic ? "italic" : "")}
+  font-style: ${props => (props.italic ? "italic" : "")};
   line-height: ${props => (props.description ? "" : 1.58)};
   font-family: ${props => (props.book ? "Circular Std Book" : "Circular Std")};
   font-size: ${props =>

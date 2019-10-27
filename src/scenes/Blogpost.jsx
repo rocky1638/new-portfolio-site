@@ -73,6 +73,7 @@ const ImageDiv = styled.div`
   height: 100%;
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 const BlogDiv = styled.div`
@@ -89,7 +90,7 @@ const BlogDiv = styled.div`
 
 const QuoteDiv = styled.div`
   margin: 20px 0px;
-  background-color: #eeeeee;
+  background-color: #ecedf7;
   padding: 20px 30px;
   border-radius: 3px;
 
