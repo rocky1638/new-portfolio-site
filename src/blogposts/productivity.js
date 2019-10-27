@@ -27,7 +27,7 @@ const data = {
         "I choose to distinguish between these two mainly because of the need to write more complex math equations in the more theoretical courses. Let’s start with the courses where <b>math equations aren’t required.</b>"
     },
     {
-      header: "Neovim + Marked 2",
+      header: "neovim + marked 2",
       sub: true
     },
     {
@@ -66,7 +66,7 @@ const data = {
         "I’ve used both of these next two programs for computer science and math based notes, as they are both very capable of all types of formats, from tables, to code blocks, to LaTeX for math. I don’t currently use them though, for reasons that I’ll mention below."
     },
     {
-      header: "Notion",
+      header: "notion",
       sub: true
     },
     {
@@ -90,7 +90,7 @@ const data = {
         'If you’re interested in taking notes with Notion, check out <a href="https://www.youtube.com/watch?v=ODl5FOMu8kI" target="_blank" rel="noopener noreferrer">this video</a> by Ali Abdaal, and download it <a href="https://notion.so" target="_blank" rel="noopener noreferrer">here</a>.'
     },
     {
-      header: "Typora",
+      header: "typora",
       sub: true
     },
     {
@@ -110,14 +110,14 @@ const data = {
         'If you wanna try it out though, download it <a href="https://www.typora.io/" target="_blank" rel="noopener noreferrer">here</a>.'
     },
     {
-      header: "Personal Notes"
+      header: "personal notes"
     },
     {
       body:
         "These are all the notes that aren’t for school. This can include anything from random ideas, to notes about my day or books that I’m reading, to cool articles I find online."
     },
     {
-      header: "Bear",
+      header: "bear",
       sub: true
     },
     {
@@ -137,7 +137,7 @@ const data = {
         'Bear is completely usable for free, but pro doesn’t cost too much and unlocks a bunch of nice features such as PDF export and additional themes. Download it <a href="https://bear.app/" target="_blank" rel="noopener noreferrer">here</a>.'
     },
     {
-      header: "Ulysses",
+      header: "ulysses",
       sub: true
     },
     {
@@ -157,14 +157,14 @@ const data = {
         'If you’re still curious, feel free to check it out <a href="https://ulysses.app/" target="_blank" rel="noopener noreferrer">here</a>.'
     },
     {
-      header: "Todo Lists"
+      header: "todo lists"
     },
     {
       body:
         "I don’t use todo lists too often in my daily life because I find that my calendar and Notion do most of the work already, but when I do use todo lists, it’s normally for small things like groceries, or tasks that I have to do the next day, when I’m lying in bed."
     },
     {
-      header: "Things 3",
+      header: "things 3",
       sub: true
     },
     {
@@ -176,14 +176,14 @@ const data = {
         'Check it out <a href="https://culturedcode.com/things/" target="_blank" rel="noopener noreferrer">here</a>.'
     },
     {
-      header: "Calendar"
+      header: "calendar"
     },
     {
       body:
         "Finally, everyone needs a calendar. There’s no need to reinvent the wheel when it comes to this, so I just use Google Calendar because it integrates with everything else where my Google account is used."
     },
     {
-      header: "Google Calendar + Fantastical",
+      header: "google calendar + fantastical",
       sub: true
     },
     {
