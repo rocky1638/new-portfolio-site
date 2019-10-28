@@ -126,7 +126,7 @@ class Blogposts extends React.Component {
             />
           </ImageDiv>
           <div style={{ width: "100%" }}>
-            <Text big block style={{ marginBottom: 0 }}>
+            <Text big block style={{ lineHeight: 1, marginBottom: 0 }}>
               {title}
             </Text>
             <Text gray4 description block>
