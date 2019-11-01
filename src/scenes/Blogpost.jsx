@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { trackWindowScroll } from "react-lazy-load-image-component";
-import { Text, Image } from "components";
+import { QuoteDiv, Text, Image, BlogDiv } from "components";
 import { NotFound } from "scenes";
 import blogPosts from "blogposts";
 import books from "books";
@@ -74,33 +74,6 @@ const ImageDiv = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
-`;
-
-const BlogDiv = styled.div`
-  padding: 30px 25%;
-
-  @media only screen and (max-width: 1100px) {
-    padding: 30px 100px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 30px 20px;
-  }
-`;
-
-const QuoteDiv = styled.div`
-  margin: 20px 0px;
-  background-color: #ecedf7;
-  padding: 20px 30px;
-  border-radius: 3px;
-
-  @media only screen and (max-width: 480px) {
-    margin: 15px 0px;
-    text-align: center;
-    margin-left: -20px;
-    margin-right: -20px;
-    border-radius: 0px;
-  }
 `;
 
 const Title = ({ children }) => (
