@@ -219,7 +219,7 @@ class Blogpost extends React.Component {
     const { date, by, title, subtitle, content } = data;
 
     return (
-      <BlogDiv>
+      <BlogDiv className="fadeUpConstant">
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
         <Date>{date || by}</Date>
