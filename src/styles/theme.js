@@ -4,7 +4,8 @@ const colors = {
   gray4: "#424444",
   gray5: "#535555",
   gray8: "#868888",
-  blue: "#44CBFF"
+  //blue: "#44CBFF",
+  blue: "#577392"
 };
 
 const theme = {

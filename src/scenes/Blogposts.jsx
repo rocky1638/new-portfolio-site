@@ -115,7 +115,11 @@ class Blogposts extends React.Component {
     const { scrollPosition } = this.props;
 
     return (
-      <Link to={`/blog/${postname}`} key={index}>
+      <Link
+        to={`/blog/${postname}`}
+        style={{ textDecoration: "none" }}
+        key={index}
+      >
         <BlogCardDiv>
           <ImageDiv>
             <Image
@@ -129,7 +133,7 @@ class Blogposts extends React.Component {
             <Text big block style={{ lineHeight: 1, marginBottom: 0 }}>
               {title}
             </Text>
-            <Text gray4 description block>
+            <Text style={{ marginTop: 2 }} gray4 description block>
               {description}
             </Text>
           </div>
@@ -142,7 +146,7 @@ class Blogposts extends React.Component {
     const { categories, selectedCategory } = this.state;
     return (
       <BlogsDiv>
-        <Text style={{ marginBottom: 30 }} block ginormous>
+        <Text fontWeight={500} style={{ marginBottom: 30 }} block ginormous>
           blog
         </Text>
         <BlogTypeSelector

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  font-family: "Circular Std";
+  font-family: "Avenir";
   font-size: 18px;
   font-weight: 400;
   color: ${({ theme }) => theme.white};
@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   margin-right: 20px;
 
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.09), 0 3px 5px rgba(0, 0, 0, 0.17);
+  box-shadow: none;
 
   &:hover {
     cursor: pointer;

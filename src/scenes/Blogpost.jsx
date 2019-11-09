@@ -77,7 +77,7 @@ const ImageDiv = styled.div`
 `;
 
 const Title = ({ children }) => (
-  <Text huge style={{ marginRight: 5 }}>
+  <Text fontWeight={600} huge style={{ marginRight: 5 }}>
     {children}
   </Text>
 );
@@ -103,6 +103,7 @@ const Header = ({ children, id, sub = false, link }) => {
         header
         id={id}
         style={{ marginTop: 20, marginBottom: 15 }}
+        fontWeight={500}
         block
       >
         {children}
