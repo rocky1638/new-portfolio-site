@@ -106,7 +106,7 @@ const data = {
     },
     {
       language: "vim",
-      code: "set tabstop=2<br />set softtabstop=2<br />set shiftwidth=2<br />set expandtab<br/>set backspace=indent,eol,start",
+      code: "set tabstop=2\nset softtabstop=2\nset shiftwidth=2\nset expandtab\nset backspace=indent,eol,start",
     },
     {
       body: "These settings switch the sizing and behavior of the tab key, inserting spaces and changing the tab width to something that most people would be more familiar with. Then, the last line makes the backspace key smarter, deleting the new tabs as if they were still tabs.",
@@ -119,14 +119,14 @@ const data = {
     },
     {
       language: "vim",
-      code: "set number<br/>set cursorline<br/>set wrap<br/>set autoindent",
+      code: "set number\nset cursorline\nset wrap\nset autoindent",
     },
     {
       body: "The first two settings add line numbers to Vim, and show highlighting on the line that you currently have selected. Then, the next two settings make your life easier, autoindenting and wrapping your text as you type.",
     },
     {
       language: "vim",
-      code: "set incsearch<br/>set hlsearch<br/>set ignorecase<br/>set smartcase",
+      code: "set incsearch\nset hlsearch\nset ignorecase\nset smartcase",
     },
     {
       body: "This last set of settings improves the searching experience in Vim, highlighting matches as they are found and intelligently ignoring the case of your search if you only type lowercase letters. More information on searching in Vim can be found in the official wiki <a href='https://vim.fandom.com/wiki/Searching' target='_blank'>here</a>.",
@@ -191,10 +191,20 @@ const data = {
     },
     {
       language: "vim",
-      code: "nnoremap j gj<br/>nnoremap k gk<br/>nnoremap B ^<br/>nnoremap E $",
+      code: "nnoremap j gj\nnnoremap k gk\nnnoremap B ^\nnnoremap E $",
     },
     {
       body: "The first two mappings there map the normal up and down movement keys to visually respect wrapped lines, meaning that they'll behave more in the way that you expect them to. Then, the next two mappings are just logical continuations of the normal 'b' and 'e' commands, which move you to the beginning and end of a word respectively. I've mapped the capital versions of these letters to move you to the beginning and the end of the <b>line</b>, respectively.",
+    },
+    {
+      language: "vim",
+      code: "nnoremap <left> <<\nnnoremap <right> >>\nvnoremap <Left> <gv\nvnoremap <Right> >gv\nnnoremap H ^\nnnoremap J <C-d>\nnnoremap K <C-u>"
+    },
+    {
+      body: "Some of my most used mappings are here. The first for allow you to indent/unindent just using your arrow keys <i>(because you shouldn't be using your arrow keys for movement)</i>."
+    },
+    {
+      body: "Then, the last three just make sense, making H, J, and K do the more extreme versions of their lowercase counterparts."
     },
     {
       header: "tmux",

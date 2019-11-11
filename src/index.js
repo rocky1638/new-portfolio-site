@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import hljs from 'highlight.js'
-import 'highlight.js/styles/gruvbox-dark.css';
+import 'highlight.js/styles/nord.css';
 import 'styles/shorthand.css';
 import 'styles/animations.css';
 import 'styles/fonts.css';

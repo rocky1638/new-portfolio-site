@@ -8,7 +8,8 @@ body {
 }
 
 code {
-  background-color: rgba(68, 203, 255, 0.5);
+  /*background-color: rgba(68, 203, 255, 0.5);*/
+  background-color: rgba(87,115,146, 0.4);
   font-size: 18px;
   padding: 0 5px;
   font-family: "Dank Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -26,9 +27,9 @@ code.code-block {
   display: block;
   white-space: pre-wrap;
   width: 100%;
-  padding: 15px 0px;
+  padding: 15px 5px;
   padding-left: 15px;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
 a {

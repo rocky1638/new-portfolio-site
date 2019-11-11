@@ -138,10 +138,9 @@ const Body = ({ children }) => (
 const Code = ({ code, language }) => (
   <div style={{ width: "100%", margin: "30px 0" }}>
     <pre>
-      <code
-        dangerouslySetInnerHTML={{ __html: code }}
-        className={`code-block ${language}`}
-      />
+      <code className={`${language} nord`}>
+        {code}
+      </code>
     </pre>
   </div>
 );
