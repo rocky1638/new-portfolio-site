@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import hljs from "highlight.js";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { QuoteDiv, Text, Image, BlogDiv } from "components";
 import { NotFound } from "scenes";
@@ -138,9 +139,7 @@ const Body = ({ children }) => (
 const Code = ({ code, language }) => (
   <div style={{ width: "100%", margin: "30px 0" }}>
     <pre>
-      <code className={`${language} nord`}>
-        {code}
-      </code>
+      <code className={`${language} nord`}>{code}</code>
     </pre>
   </div>
 );
@@ -165,6 +164,11 @@ const BlockQuote = ({ quote }) => (
 );
 
 class Blogpost extends React.Component {
+  componentDidMount() {
+    hljs.initHighlighting.called = false;
+    hljs.initHighlighting();
+  }
+
   renderSection = (section, index) => {
     const {
       code,
@@ -198,9 +202,9 @@ class Blogpost extends React.Component {
         />
       );
     } else if (code) {
-      return <Code code={code} language={language} />;
+      return <Code key={index} code={code} language={language} />;
     } else if (blockquote) {
-      return <BlockQuote quote={blockquote} />;
+      return <BlockQuote key={index} quote={blockquote} />;
     }
   };
 
