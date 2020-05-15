@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  font-family: "Avenir";
+  font-family: "Avenir", "Jost";
   font-size: 18px;
   font-weight: 400;
   color: ${({ theme }) => theme.white};
