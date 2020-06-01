@@ -41,6 +41,11 @@ a:visited {
   color: #577392;
 }
 
+li {
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
 /** For Animations **/
 .song-details {
   position: absolute;

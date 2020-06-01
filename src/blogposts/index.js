@@ -8,6 +8,7 @@ import toronto from "./toronto";
 import mrsa from "./mrsa";
 import kitchenmate from "./kitchenmate";
 import productivity from "./productivity";
+import neureka from "./neureka";
 
 const blogposts = {
   codesetup,
@@ -19,7 +20,8 @@ const blogposts = {
   mrsa,
   kitchenmate,
   productivity,
-  toronto
+  toronto,
+  neureka
 };
 
 export default blogposts;

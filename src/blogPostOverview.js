@@ -1,5 +1,12 @@
 const blogPostOverview = [
   {
+    title: "neureka 2020",
+    postname: "neureka",
+    thumbnail: "https://foodiy-beta.s3.amazonaws.com/brain.png",
+    description: "ai and seizures",
+    category: "projects"
+  },
+  {
     title: "my productivity setup",
     postname: "productivity",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/productivity.png",
