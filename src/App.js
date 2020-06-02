@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "styles/theme";
-import { Home, Blogposts, Blogpost, Books, NotFound } from "scenes";
 import { ScrollToTop, DarkModeToggle } from "components";
 import keys from "keys";
+
+const Home = lazy(() => import("scenes/Home"));
+const Blogposts = lazy(() => import("scenes/Blogposts"));
+const Blogpost = lazy(() => import("scenes/Blogpost"));
+const Books = lazy(() => import("scenes/Books"));
+const NotFound = lazy(() => import("scenes/NotFound"));
 
 const BackgroundDiv = styled.div`
   min-height: 100vh;
@@ -40,14 +45,16 @@ class App extends Component {
                 isDarkMode={dark}
                 toggleDarkMode={this.toggleDarkMode}
               />
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/blog" component={Blogposts} />
-                <Route exact path="/blog/:postname" component={Blogpost} />
-                <Route exact path="/books" component={Books} />
-                <Route exact path="/books/:postname" component={Blogpost} />
-                <Route path="*" component={NotFound} />
-              </Switch>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/blog" component={Blogposts} />
+                  <Route exact path="/blog/:postname" component={Blogpost} />
+                  <Route exact path="/books" component={Books} />
+                  <Route exact path="/books/:postname" component={Blogpost} />
+                  <Route path="*" component={NotFound} />
+                </Switch>
+              </Suspense>
             </BackgroundDiv>
           </ScrollToTop>
         </BrowserRouter>
