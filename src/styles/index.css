@@ -86,6 +86,14 @@ li {
   background-color: #222222;
 }
 
+.bg-dark {
+  transition: 0.3s;
+}
+
+.bg-light {
+  transition: 0.3s;
+}
+
 @media screen and (max-width: 1180px) {
   .song-details,
   .spotify-closed-widget {

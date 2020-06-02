@@ -63,7 +63,9 @@ class Home extends React.Component {
     const { theme } = this.props;
     return (
       <div
-        className="f-aic f-jcc fadeUp"
+        className={`f-aic f-jcc fadeUp ${
+          theme.isDark ? "bg-dark" : "bg-light"
+        }`}
         style={{
           overflowX: "hidden",
           position: "absolute",

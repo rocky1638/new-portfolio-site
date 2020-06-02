@@ -1,16 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { Text, Image } from "components";
 import blogPostOverview from "../blogPostOverview";
 
 const BlogsDiv = styled.div`
   padding: 30px 25%;
-  background-color: ${props => props.theme.isDark
-    ? props.theme.dark.white
-    : props.theme.light.white
-  };
+  background-color: ${(props) =>
+    props.theme.isDark ? props.theme.dark.white : props.theme.light.white};
   min-height: 100vh;
 
   @media only screen and (max-width: 1100px) {
@@ -60,7 +58,7 @@ const ImageDiv = styled.div`
 `;
 
 const CategoryText = ({ value, select, categories, selectedCategory }) => {
-  const index = categories.findIndex(el => el === value);
+  const index = categories.findIndex((el) => el === value);
   const selected = index === selectedCategory;
 
   return (
@@ -69,7 +67,7 @@ const CategoryText = ({ value, select, categories, selectedCategory }) => {
       style={{
         cursor: "pointer",
         margin: index === 0 ? "0 10px 0 0" : "0 10px",
-        color: selected ? "" : "#868888"
+        color: selected ? "" : "#868888",
       }}
       onClick={() => select(index)}
     >
@@ -78,7 +76,7 @@ const CategoryText = ({ value, select, categories, selectedCategory }) => {
   );
 };
 
-const BlogTypeSelector = props => {
+const BlogTypeSelector = (props) => {
   return (
     <div
       style={{ display: "flex", alignItems: "center", marginBottom: "25px" }}
@@ -98,15 +96,15 @@ class Blogposts extends React.Component {
 
     this.state = {
       categories: ["all", "projects", "exp", "places", "other"],
-      selectedCategory: 0
+      selectedCategory: 0,
     };
   }
 
-  select = index => {
+  select = (index) => {
     this.setState({ selectedCategory: index });
   };
 
-  filter = el => {
+  filter = (el) => {
     const { category } = el;
 
     if (this.state.categories[this.state.selectedCategory] === "all")
@@ -149,8 +147,9 @@ class Blogposts extends React.Component {
 
   render() {
     const { categories, selectedCategory } = this.state;
+    const { theme } = this.props;
     return (
-      <BlogsDiv>
+      <BlogsDiv className={theme.isDark ? "bg-dark" : "bg-light"}>
         <Text fontWeight={500} style={{ marginBottom: 30 }} block ginormous>
           blog
         </Text>
@@ -166,4 +165,4 @@ class Blogposts extends React.Component {
     );
   }
 }
-export default trackWindowScroll(Blogposts);
+export default withTheme(trackWindowScroll(Blogposts));

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import hljs from "highlight.js";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { QuoteDiv, Text, Image, BlogDiv } from "components";
@@ -28,7 +28,7 @@ class LinkIcon extends React.Component {
     super(props);
 
     this.state = {
-      showingText: false
+      showingText: false,
     };
   }
   onMouseEnter = () => {
@@ -59,7 +59,7 @@ class LinkIcon extends React.Component {
             style={{
               paddingTop: 2,
               transition: "0.5s",
-              opacity: showingText ? "1" : "0"
+              opacity: showingText ? "1" : "0",
             }}
           >
             Open in Google Maps
@@ -179,7 +179,7 @@ class Blogpost extends React.Component {
       body,
       image,
       language,
-      link
+      link,
     } = section;
     const { scrollPosition } = this.props;
 
@@ -220,9 +220,12 @@ class Blogpost extends React.Component {
     }
 
     const { date, by, title, subtitle, content } = data;
+    const { theme } = this.props;
 
     return (
-      <BlogDiv className="fadeUpConstant">
+      <BlogDiv
+        className={`fadeUpConstant ${theme.isDark ? "bg-dark" : "bg-light"}`}
+      >
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
         <Date>{date || by}</Date>
@@ -232,4 +235,4 @@ class Blogpost extends React.Component {
   }
 }
 
-export default trackWindowScroll(Blogpost);
+export default withTheme(trackWindowScroll(Blogpost));
