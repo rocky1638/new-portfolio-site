@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { Text, Image } from "components";
 import blogPostOverview from "../blogPostOverview";
+import keys from "keys";
 
 const BlogsDiv = styled.div`
   padding: 30px 25%;
@@ -96,12 +97,13 @@ class Blogposts extends React.Component {
 
     this.state = {
       categories: ["all", "projects", "exp", "places", "other"],
-      selectedCategory: 0,
+      selectedCategory: JSON.parse(localStorage.getItem(keys.category)) || 0,
     };
   }
 
   select = (index) => {
     this.setState({ selectedCategory: index });
+    localStorage.setItem(keys.category, index);
   };
 
   filter = (el) => {

@@ -4,8 +4,8 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "styles/theme";
 import { Home, Blogposts, Blogpost, Books, NotFound } from "scenes";
 import { ScrollToTop, DarkModeToggle } from "components";
+import keys from "keys";
 
-const localStorageKey = "rock_zhou_is_dark_mode";
 const BackgroundDiv = styled.div`
   min-height: 100vh;
   background-color: ${(props) => (props.theme.isDark ? "black" : "white")};
@@ -16,13 +16,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      dark: JSON.parse(localStorage.getItem(localStorageKey)) || false,
+      dark: JSON.parse(localStorage.getItem(keys.darkMode)) || false,
     };
+  }
+
+  componentWillUnmount() {
+    localStorage.removeItem(keys.darkMode);
   }
 
   toggleDarkMode = async () => {
     this.setState({ dark: !this.state.dark });
-    localStorage.setItem(localStorageKey, !this.state.dark);
+    localStorage.setItem(keys.darkMode, !this.state.dark);
   };
 
   render() {
