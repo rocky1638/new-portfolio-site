@@ -6,6 +6,8 @@ import BlogDiv from "./BlogDiv";
 import QuoteDiv from "./QuoteDiv";
 import ScrollToTop from "./ScrollToTop";
 import DarkModeToggle from "./DarkModeToggle";
+import Loading from "./Loading";
+import Spinner from "./Spinner";
 
 export {
   Text,
@@ -15,5 +17,7 @@ export {
   BlogDiv,
   QuoteDiv,
   ScrollToTop,
-  DarkModeToggle
+  DarkModeToggle,
+  Loading,
+  Spinner,
 };

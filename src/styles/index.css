@@ -120,7 +120,6 @@ li {
 }
 
 ::selection {
-  /* background: #ffb7b7; */
   background: #64f575;
 }
 ::-moz-selection {
