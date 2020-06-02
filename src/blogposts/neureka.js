@@ -19,6 +19,10 @@ const data = {
     },
     {
       body:
+        "If you want to take a look at the source code, you can find it on Github <a href='https://github.com/rocky1638/eeg-seizure-detection' target='_blank' rel='noopener noreferrer'>here.</a>",
+    },
+    {
+      body:
         "If you don't want to know about the inner workings, feel free to skip to the learnings and conclusion, but read on to get an idea of how we managed to place fourth!",
     },
     {

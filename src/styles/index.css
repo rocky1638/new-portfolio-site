@@ -118,3 +118,11 @@ li {
     width: 70vw;
   }
 }
+
+::selection {
+  /* background: #ffb7b7; */
+  background: #64f575;
+}
+::-moz-selection {
+  background: #64f575;
+}
