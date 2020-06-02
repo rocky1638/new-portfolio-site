@@ -63,7 +63,7 @@ class Home extends React.Component {
     const { theme } = this.props;
     return (
       <div
-        className={`f-aic f-jcc fadeUp ${
+        className={`f-aic f-jcc fadeIn ${
           theme.isDark ? "bg-dark" : "bg-light"
         }`}
         style={{

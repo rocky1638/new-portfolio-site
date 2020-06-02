@@ -133,7 +133,11 @@ class Blogposts extends React.Component {
             />
           </ImageDiv>
           <div style={{ width: "100%" }}>
-            <Text big block style={{ lineHeight: 1, marginBottom: 0 }}>
+            <Text
+              big
+              block
+              style={{ lineHeight: 1, marginBottom: 0, fontWeight: 500 }}
+            >
               {title}
             </Text>
             <Text style={{ marginTop: 2 }} gray4 description block>
@@ -149,7 +153,7 @@ class Blogposts extends React.Component {
     const { categories, selectedCategory } = this.state;
     const { theme } = this.props;
     return (
-      <BlogsDiv className={theme.isDark ? "bg-dark" : "bg-light"}>
+      <BlogsDiv className={`fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}>
         <Text fontWeight={500} style={{ marginBottom: 30 }} block ginormous>
           blog
         </Text>

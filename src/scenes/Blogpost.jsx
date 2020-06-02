@@ -223,9 +223,7 @@ class Blogpost extends React.Component {
     const { theme } = this.props;
 
     return (
-      <BlogDiv
-        className={`fadeUpConstant ${theme.isDark ? "bg-dark" : "bg-light"}`}
-      >
+      <BlogDiv className={`fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}>
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
         <Date>{date || by}</Date>

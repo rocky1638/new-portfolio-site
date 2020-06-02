@@ -1,3 +1,8 @@
+.root-dark {
+  min-height: 100vh;
+  background-color: black;
+}
+
 body {
   margin: 0;
   padding: 0;
