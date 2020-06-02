@@ -9,11 +9,11 @@ body {
 
 code {
   /*background-color: rgba(68, 203, 255, 0.5);*/
-  background-color: rgba(87,115,146, 0.4);
+  background-color: rgba(87, 115, 146, 0.4);
   font-size: 18px;
   padding: 0 5px;
-  font-family: "Dank Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Dank Mono", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 
 @media only screen and (max-width: 768px) {
@@ -34,11 +34,11 @@ code.code-block {
 
 a {
   text-decoration: underline;
-  color: #577392;
+  color: #73aae6;
 }
 
 a:visited {
-  color: #577392;
+  color: #73aae6;
 }
 
 li {
@@ -55,7 +55,12 @@ li {
   padding: 20px 25%;
   display: flex;
   background-color: white;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.song-details-dark {
+  background-color: #1b1b1b;
+  box-shadow: none;
 }
 
 .main-song-div {
@@ -73,12 +78,17 @@ li {
 }
 
 .spotify-closed-widget:hover {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   transition: 0.3s;
 }
 
+.spotify-closed-widget-dark:hover {
+  background-color: #222222;
+}
+
 @media screen and (max-width: 1180px) {
-  .song-details, .spotify-closed-widget {
+  .song-details,
+  .spotify-closed-widget {
     padding: 20px 15%;
   }
   .main-song-div {
@@ -87,7 +97,8 @@ li {
 }
 
 @media screen and (max-width: 768px) {
-  .song-details, .spotify-closed-widget {
+  .song-details,
+  .spotify-closed-widget {
     padding: 20px 5%;
   }
   .main-song-div {

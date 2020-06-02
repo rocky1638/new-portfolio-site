@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 const QuoteDiv = styled.div`
   margin: 20px 0px;
-  background-color: #ecedf7;
+  background-color: ${props => props.theme.isDark
+    ? props.theme.dark.quote
+    : props.theme.light.quote
+  };
   padding: 20px 30px;
   border-radius: 3px;
 

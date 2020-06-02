@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import OutsideClickHandler from "react-outside-click-handler";
 import { motion, AnimatePresence } from "framer-motion";
 import SpotifyLogo from "static/spotify.png";
@@ -73,9 +73,7 @@ class SpotifyWidget extends React.Component {
     let moreData;
     if (songObject.data) {
       moreData = await axios.get(
-        `${baseUrl}/spotify?artist=${songObject.data.artist["#text"]}&title=${
-          songObject.data.name
-        }`
+        `${baseUrl}/spotify?artist=${songObject.data.artist["#text"]}&title=${songObject.data.name}`
       );
     }
     await this.setState({ moreSong: moreData.data });
@@ -83,7 +81,7 @@ class SpotifyWidget extends React.Component {
 
   render() {
     const { song, moreSong } = this.state;
-    const { showingDetails } = this.props;
+    const { showingDetails, theme } = this.props;
 
     return (
       <AnimatePresence>
@@ -93,15 +91,17 @@ class SpotifyWidget extends React.Component {
               onClick={this.props.showDetails}
               initial={{
                 y: -100,
-                opacity: 0
+                opacity: 0,
               }}
               transition={{ duration: 0.4 }}
               animate={{
                 y: 0,
-                opacity: 1
+                opacity: 1,
               }}
               key={2}
-              className="f-aic spotify-closed-widget"
+              className={`f-aic spotify-closed-widget ${
+                theme.isDark ? "spotify-closed-widget-dark" : ""
+              }`}
             >
               <img
                 src={song.image[song.image.length - 1]["#text"]}
@@ -133,25 +133,27 @@ class SpotifyWidget extends React.Component {
               <motion.div
                 initial={{
                   y: 100,
-                  opacity: 0
+                  opacity: 0,
                 }}
                 transition={{ duration: 0.4 }}
                 animate={{
                   y: 0,
-                  opacity: 1
+                  opacity: 1,
                 }}
                 exit={{
                   y: 100,
-                  opacity: 0
+                  opacity: 0,
                 }}
-                className="song-details"
+                className={`song-details ${
+                  theme.isDark ? "song-details-dark" : ""
+                }`}
               >
                 <img
                   style={{
                     width: "40%",
                     maxWidth: 250,
                     marginRight: 15,
-                    alignSelf: "center"
+                    alignSelf: "center",
                   }}
                   src={song.image[song.image.length - 1]["#text"]}
                   alt="album cover"
@@ -202,4 +204,4 @@ class SpotifyWidget extends React.Component {
   }
 }
 
-export default SpotifyWidget;
+export default withTheme(SpotifyWidget);

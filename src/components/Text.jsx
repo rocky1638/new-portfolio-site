@@ -26,13 +26,26 @@ const StyledText = styled.span`
     props.fontWeight ? props.fontWeight : props.bold ? "bold" : 400};
   display: ${props => (props.block ? "block" : "")};
   color: ${props =>
-    props.gray4
-      ? props.theme.gray4
+    props.theme.isDark
+    ?
+      props.gray4
+      ? props.theme.dark.gray4
       : props.gray5
-      ? props.theme.gray5
+      ? props.theme.dark.gray5
       : props.gray8
-      ? props.theme.gray8
-      : props.theme.black};
+      ? props.theme.dark.gray8
+      : props.theme.dark.black
+
+    :
+      props.gray4
+      ? props.theme.light.gray4
+      : props.gray5
+      ? props.theme.light.gray5
+      : props.gray8
+      ? props.theme.light.gray8
+      : props.theme.light.black
+
+  };
 
   @media only screen and (max-width: 768px) {
     font-size: ${props =>

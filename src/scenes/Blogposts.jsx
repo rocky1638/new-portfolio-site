@@ -7,6 +7,11 @@ import blogPostOverview from "../blogPostOverview";
 
 const BlogsDiv = styled.div`
   padding: 30px 25%;
+  background-color: ${props => props.theme.isDark
+    ? props.theme.dark.white
+    : props.theme.light.white
+  };
+  min-height: 100vh;
 
   @media only screen and (max-width: 1100px) {
     padding: 30px 150px;
