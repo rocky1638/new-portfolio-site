@@ -15,7 +15,7 @@ const StyledLinkIcon = styled(FaExternalLinkAlt)`
   color: ${({ theme }) => theme.gray8};
 
   &:hover {
-    color ${({ theme }) => theme.gray5}
+    color: ${({ theme }) => theme.gray5};
   }
 
   @media only screen and (max-width: 768px) {
