@@ -73,6 +73,7 @@ class Home extends React.Component {
           bottom: 0,
           right: 0,
           left: 0,
+          minHeight: "100vh",
           backgroundColor: theme.isDark ? theme.dark.white : theme.light.white,
         }}
       >
