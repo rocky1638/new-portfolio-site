@@ -8,6 +8,7 @@ import ScrollToTop from "./ScrollToTop";
 import DarkModeToggle from "./DarkModeToggle";
 import Loading from "./Loading";
 import Spinner from "./Spinner";
+import BackButton from "./BackButton";
 
 export {
   Text,
@@ -20,4 +21,5 @@ export {
   DarkModeToggle,
   Loading,
   Spinner,
+  BackButton,
 };

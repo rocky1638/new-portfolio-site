@@ -2,7 +2,7 @@ import React, { Component, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "styles/theme";
-import { Loading, ScrollToTop, DarkModeToggle } from "components";
+import { BackButton, Loading, ScrollToTop, DarkModeToggle } from "components";
 import keys from "keys";
 
 const Home = lazy(() => import("scenes/Home"));
@@ -14,7 +14,8 @@ const LoadingEasterEgg = lazy(() => import("scenes/LoadingEasterEgg"));
 
 const BackgroundDiv = styled.div`
   min-height: 100vh;
-  background-color: ${(props) => (props.theme.isDark ? "black" : "white")};
+  background-color: ${(props) =>
+    props.theme.isDark ? props.theme.dark.white : props.theme.light.white};
 `;
 
 class App extends Component {
@@ -46,6 +47,7 @@ class App extends Component {
                 isDarkMode={dark}
                 toggleDarkMode={this.toggleDarkMode}
               />
+              <BackButton />
               <Suspense fallback={<Loading />}>
                 <Switch>
                   <Route exact path="/" component={Home} />
