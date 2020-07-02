@@ -3,7 +3,7 @@ import axios from "axios";
 import styled, { withTheme } from "styled-components";
 import OutsideClickHandler from "react-outside-click-handler";
 import { motion, AnimatePresence } from "framer-motion";
-import SpotifyLogo from "static/spotify.png";
+import SpotifyLogo from "static/spotify.svg";
 import { Text } from "components";
 
 const OverflowDiv = styled.div`
