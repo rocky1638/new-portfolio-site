@@ -96,14 +96,12 @@ class Home extends React.Component {
               </span>
             </Text>
             <Text style={{ marginBottom: 10 }} block book gray4>
-              Hi! I'm currently in my third year of Computer Science at the
+              Hi! I'm currently in my fourth year of Computer Science at the
               University of Waterloo, and focused on all things software, from
-              deep learning to fullstack, to design.
+              deep learning to fullstack to design.
             </Text>
             <Text style={{ marginBottom: 20 }} block book gray4>
-              When I'm not doing homework or sleeping, I enjoy playing
-              badminton, watching basketball, and playing and singing along to
-              instruments such as guitar and piano.
+              When I'm not doing homework or sleeping, I enjoy photography, watching basketball, and playing and singing along to guitar and piano.
             </Text>
             <div className="f-aic">
               <a
