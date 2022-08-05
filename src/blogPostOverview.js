@@ -5,7 +5,7 @@ const blogPostOverview = [
     date: "06/01/2020",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/brain.png",
     description:
-      "An exploration into detecting seizures using EEG data and machine learning.",
+      "An exploration into detecting seizures using EEG data and ML.",
     tags: ["projects", "tech"],
   },
   {
