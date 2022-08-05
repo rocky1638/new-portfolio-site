@@ -40,10 +40,10 @@ const RightDiv = styled.div`
 
 const BlogCardDiv = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: 100px;
-  margin-bottom: 8px;
+  min-height: 100px;
+  margin-bottom: 12px;
 `;
 
 const BlogpostCard = ({ blogpost }) => {
