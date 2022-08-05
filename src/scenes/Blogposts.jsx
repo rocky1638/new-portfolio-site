@@ -6,99 +6,75 @@ import { Text, BlogpostCard } from "components";
 import blogPostOverview from "../blogPostOverview";
 import keys from "keys";
 
-const BlogsDiv = styled.div`
-  padding: 30px 25%;
-  background-color: ${(props) =>
-    props.theme.isDark ? props.theme.dark.white : props.theme.light.white};
-  min-height: 100vh;
-
-  @media only screen and (max-width: 1100px) {
-    padding: 30px 150px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 30px 50px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    padding: 30px 20px;
-  }
+const BlogsDivWrapper = styled.div`
+  overflow-x: hidden;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 60px 32px 60px 32px;
+  background-color: ${({ theme }) =>
+    theme.isDark ? theme.dark.white : theme.light.white};
 `;
-const CategoryText = ({ value, select, categories, selectedCategory }) => {
-  const index = categories.findIndex((el) => el === value);
-  const selected = index === selectedCategory;
 
+const BlogDiv = styled.div`
+  max-width: ${(props) => props.theme.dimensions.maxWidth}px;
+  width: 100%;
+  padding: 0;
+`;
+// const CategoryText = ({ value, select, categories, selectedCategory }) => {
+//   const index = categories.findIndex((el) => el === value);
+//   const selected = index === selectedCategory;
+
+//   return (
+//     <Text
+//       big
+//       style={{
+//         cursor: "pointer",
+//         margin: index === 0 ? "0 10px 0 0" : "0 10px",
+//         color: selected ? "" : "#868888",
+//       }}
+//       onClick={() => select(index)}
+//     >
+//       {value}
+//     </Text>
+//   );
+// };
+
+// const BlogTypeSelector = (props) => {
+//   return (
+//     <div
+//       style={{ display: "flex", alignItems: "center", marginBottom: "25px" }}
+//     >
+//       <CategoryText value="all" {...props} />
+//       <CategoryText value="projects" {...props} />
+//       <CategoryText value="exp" {...props} />
+//       <CategoryText value="places" {...props} />
+//       <CategoryText value="other" {...props} />
+//     </div>
+//   );
+// };
+
+const Blogposts = ({ theme }) => {
   return (
-    <Text
-      big
-      style={{
-        cursor: "pointer",
-        margin: index === 0 ? "0 10px 0 0" : "0 10px",
-        color: selected ? "" : "#868888",
-      }}
-      onClick={() => select(index)}
+    <BlogsDivWrapper
+      className={`f-jcc fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}
     >
-      {value}
-    </Text>
-  );
-};
-
-const BlogTypeSelector = (props) => {
-  return (
-    <div
-      style={{ display: "flex", alignItems: "center", marginBottom: "25px" }}
-    >
-      <CategoryText value="all" {...props} />
-      <CategoryText value="projects" {...props} />
-      <CategoryText value="exp" {...props} />
-      <CategoryText value="places" {...props} />
-      <CategoryText value="other" {...props} />
-    </div>
-  );
-};
-
-class Blogposts extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: ["all", "projects", "exp", "places", "other"],
-      selectedCategory: JSON.parse(localStorage.getItem(keys.category)) || 0,
-    };
-  }
-
-  select = (index) => {
-    this.setState({ selectedCategory: index });
-    localStorage.setItem(keys.category, index);
-  };
-
-  filter = (el) => {
-    const { category } = el;
-
-    if (this.state.categories[this.state.selectedCategory] === "all")
-      return true;
-
-    return category === this.state.categories[this.state.selectedCategory];
-  };
-
-  render() {
-    const { categories, selectedCategory } = this.state;
-    const { theme } = this.props;
-    return (
-      <BlogsDiv className={`fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}>
-        <Text fontWeight={500} style={{ marginBottom: 30 }} block ginormous>
-          blog
+      <BlogDiv>
+        <Text fontWeight={500} style={{ marginBottom: 30 }} block big>
+          Rock's Blog
         </Text>
-        <BlogTypeSelector
-          categories={categories}
-          selectedCategory={selectedCategory}
-          select={this.select}
-        />
-        {blogPostOverview.filter(this.filter).map((blogpost, index) => (
+        {/* <BlogTypeSelector
+            categories={categories}
+            selectedCategory={selectedCategory}
+            select={this.select}
+          /> */}
+        {blogPostOverview.map((blogpost, index) => (
           <BlogpostCard blogpost={blogpost} index={index} />
         ))}
-      </BlogsDiv>
-    );
-  }
-}
+      </BlogDiv>
+    </BlogsDivWrapper>
+  );
+};
 export default withTheme(trackWindowScroll(Blogposts));

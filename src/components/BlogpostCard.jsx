@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Text } from "components";
+import { render } from "react-dom";
 
 const TagDiv = styled.div`
   gap: 4px;
@@ -47,7 +48,16 @@ const BlogCardDiv = styled.div`
 `;
 
 const BlogpostCard = ({ blogpost }) => {
-  const { title, description, postname, thumbnail, date } = blogpost;
+  const { title, description, postname, thumbnail, date, tags } = blogpost;
+  const renderTags = () => {
+    if (tags) {
+      return tags.map((tag, i) => (
+        <Tag index={i}>
+          <Text pill>{tag}</Text>
+        </Tag>
+      ));
+    }
+  };
   return (
     <Link to={`/blog/${postname}`} style={{ textDecoration: "none" }}>
       <BlogCardDiv>
@@ -68,17 +78,7 @@ const BlogpostCard = ({ blogpost }) => {
             <Text style={{ marginBottom: 2 }} block pill gray8>
               Published {date || ""}
             </Text>
-            <TagDiv className="f-aic f-jcl">
-              <Tag>
-                <Text pill>projects</Text>
-              </Tag>
-              <Tag>
-                <Text pill>travel</Text>
-              </Tag>
-              <Tag>
-                <Text pill>personal</Text>
-              </Tag>
-            </TagDiv>
+            <TagDiv className="f-aic f-jcl">{renderTags()}</TagDiv>
           </div>
           <Text style={{ marginTop: 2 }} gray4 description block>
             {description}
