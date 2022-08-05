@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
 import hljs from "highlight.js";
 import { trackWindowScroll } from "react-lazy-load-image-component";
@@ -8,67 +8,61 @@ import blogPosts from "blogposts";
 import books from "books";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-const StyledLinkIcon = styled(FaExternalLinkAlt)`
-  width: 12px;
-  margin-left: 15px;
-  margin-right: 3px;
-  color: ${({ theme }) => theme.gray8};
+import { marked } from "marked";
+import ReactMarkdown from "react-markdown";
+import blogPostOverview from "blogPostOverview";
 
-  &:hover {
-    color: ${({ theme }) => theme.gray5};
+const StyledReactMarkdown = styled(ReactMarkdown)`
+  white-space: pre-wrap;
+
+  ol,
+  ul {
+    line-height: 0;
+    margin-bottom: -8px;
   }
 
-  @media only screen and (max-width: 768px) {
-    margin-left: 10px;
+  li {
+    font-family: "Inter", "--apple-system", "BlinkMacSystemFont", '"Segoe UI"',
+      "Roboto", "Ubuntu", "Cantarell", '"Helvetica Neue"', "sans-serif";
+    color: ${(props) =>
+      props.theme.isDark
+        ? props.gray4
+          ? props.theme.dark.gray4
+          : props.gray5
+          ? props.theme.dark.gray5
+          : props.gray8
+          ? props.theme.dark.gray8
+          : props.theme.dark.black
+        : props.gray4
+        ? props.theme.light.gray4
+        : props.gray5
+        ? props.theme.light.gray5
+        : props.gray8
+        ? props.theme.light.gray8
+        : props.theme.light.black};
+  }
+
+  .md-h2 {
+    margin-top: 24px;
+  }
+
+  .md-h3 {
+    margin-top: 16px;
+    text-decoration: underline;
   }
 `;
 
-class LinkIcon extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showingText: false,
-    };
-  }
-  onMouseEnter = () => {
-    this.setState({ showingText: true });
-  };
-
-  onMouseLeave = () => {
-    this.setState({ showingText: false });
-  };
-
-  render() {
-    const { link } = this.props;
-    const { showingText } = this.state;
-    if (!link) {
-      return null;
-    }
-
-    return (
-      <a href={link} target="_blank" rel="noopener noreferrer">
-        <div className="f-aic" style={{ cursor: "pointer" }}>
-          <StyledLinkIcon
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-          />
-          <Text
-            tiny
-            gray5
-            style={{
-              paddingTop: 2,
-              transition: "0.5s",
-              opacity: showingText ? "1" : "0",
-            }}
-          >
-            Open in Google Maps
-          </Text>
-        </div>
-      </a>
-    );
-  }
-}
+const BlogDivWrapper = styled.div`
+  overflow-x: hidden;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 120px 32px 120px 32px;
+  background-color: ${({ theme }) =>
+    theme.isDark ? theme.dark.white : theme.light.white};
+`;
 
 const ImageDiv = styled.div`
   height: 100%;
@@ -78,62 +72,21 @@ const ImageDiv = styled.div`
 `;
 
 const Title = ({ children }) => (
-  <Text fontWeight={600} huge style={{ marginRight: 5 }}>
+  <Text fontWeight={600} big>
     {children}
   </Text>
 );
 
 const Subtitle = ({ children }) => (
-  <Text style={{ marginTop: -5 }} big gray4 block>
+  <Text style={{ marginTop: -5 }} header gray4 block>
     {children}
   </Text>
 );
 
 const Date = ({ children }) => (
-  <Text block style={{ marginBottom: 30, marginTop: 17.5 }} gray8>
+  <Text block style={{ marginBottom: 32, marginTop: 16 }} gray8>
     - {children} -
   </Text>
-);
-
-const Header = ({ children, id, sub = false, link }) => {
-  let component;
-  if (sub) {
-    component = (
-      <Text
-        gray4
-        header
-        id={id}
-        style={{ marginTop: 20, marginBottom: 15 }}
-        fontWeight={500}
-        block
-      >
-        {children}
-      </Text>
-    );
-  } else {
-    component = (
-      <Text big id={id} bold style={{ marginTop: 25, marginBottom: 15 }} block>
-        {children}
-      </Text>
-    );
-  }
-
-  return (
-    <div className="f-aib f-jcl">
-      {component}
-      <LinkIcon link={link} />
-    </div>
-  );
-};
-
-const Body = ({ children }) => (
-  <Text
-    dangerouslySetInnerHTML={{ __html: children }}
-    small
-    block
-    book
-    style={{ marginBottom: 21 }}
-  />
 );
 
 const Code = ({ code, language }) => (
@@ -144,14 +97,9 @@ const Code = ({ code, language }) => (
   </div>
 );
 
-const BlogImage = ({ src, subtitle, scrollPosition }) => (
+const BlogImage = ({ src, scrollPosition }) => (
   <ImageDiv>
     <Image src={src} scrollPosition={scrollPosition} />
-    {subtitle && (
-      <Text style={{ marginBottom: 20 }} block book gray8 small>
-        {subtitle}
-      </Text>
-    )}
   </ImageDiv>
 );
 
@@ -163,74 +111,66 @@ const BlockQuote = ({ quote }) => (
   </QuoteDiv>
 );
 
-class Blogpost extends React.Component {
-  componentDidMount() {
-    hljs.initHighlighting.called = false;
-    hljs.initHighlighting();
+const Blogpost = (props) => {
+  const [markdown, setMarkdown] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getFileData = async () => {
+      const path = require(`../static/blogposts/${props.match.params.postname}.md`);
+      const response = await fetch(path);
+      const text = await response.text();
+      setMarkdown(text);
+    };
+    getFileData().catch((e) => {
+      console.error(e);
+      setError(true);
+    });
+  }, [props.match.params.postname]);
+
+  if (error) {
+    return <NotFound />;
   }
 
-  renderSection = (section, index) => {
-    const {
-      code,
-      blockquote,
-      header,
-      sub,
-      id,
-      body,
-      image,
-      language,
-      link,
-    } = section;
-    const { scrollPosition } = this.props;
+  const metadata = blogPostOverview.find(
+    (obj) => obj.postname === props.match.params.postname
+  );
+  const { date, by, title, description } = metadata;
 
-    if (header) {
-      return (
-        <Header id={id} sub={sub} link={link} key={index}>
-          {header}
-        </Header>
-      );
-    } else if (body) {
-      return <Body key={index}>{body}</Body>;
-    } else if (image) {
-      const { src, subtitle } = image;
-      return (
-        <BlogImage
-          key={index}
-          src={src}
-          subtitle={subtitle}
-          scrollPosition={scrollPosition}
-        />
-      );
-    } else if (code) {
-      return <Code key={index} code={code} language={language} />;
-    } else if (blockquote) {
-      return <BlockQuote key={index} quote={blockquote} />;
-    }
-  };
-
-  render() {
-    let data = blogPosts[this.props.match.params.postname];
-
-    if (!data) {
-      data = books[this.props.match.params.postname];
-    }
-
-    if (!data) {
-      return <NotFound />;
-    }
-
-    const { date, by, title, subtitle, content } = data;
-    const { theme } = this.props;
-
-    return (
-      <BlogDiv className={`fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}>
+  return (
+    <BlogDivWrapper
+      className={`f-jcc fadeIn ${props.theme.isDark ? "bg-dark" : "bg-light"}`}
+    >
+      <BlogDiv
+        className={`fadeIn ${props.theme.isDark ? "bg-dark" : "bg-light"}`}
+      >
         <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
+        <Subtitle>{description}</Subtitle>
         <Date>{date || by}</Date>
-        {content.map((section, index) => this.renderSection(section, index))}
+        <StyledReactMarkdown
+          id="markdown-container"
+          children={markdown}
+          components={{
+            p: ({ node, ...props }) => (
+              <Text className="md-p" block {...props} />
+            ),
+            li: ({ node, ...props }) => (
+              <li>
+                <Text {...props} />
+              </li>
+            ),
+            img: ({ node, ...props }) => <BlogImage {...props} />,
+            h2: ({ node, ...props }) => (
+              <Text className="md-h2" header block bold {...props} />
+            ),
+            h3: ({ node, ...props }) => (
+              <Text className="md-h3" bold block {...props} />
+            ),
+          }}
+        />
       </BlogDiv>
-    );
-  }
-}
+    </BlogDivWrapper>
+  );
+};
 
 export default withTheme(trackWindowScroll(Blogpost));

@@ -20,13 +20,14 @@ const NotFound = () => (
       </Text>
       <Image
         style={{ margin: 10, marginLeft: 0, height: 300, width: 300 }}
-        src="https://foodiy-beta.s3.amazonaws.com/404.gif" />
+        src="https://foodiy-beta.s3.amazonaws.com/404.gif"
+      />
       <Text style={{ marginTop: 10, marginBottom: 20 }} block book gray4>
-        That page doesn't exist. Click the button to head back home.
+        That page doesn't exist.
       </Text>
-      <Link to="/">
-        <Button>Home</Button>
-      </Link>
+      <Text>
+        <Link to="/">{"<- Head back home"}</Link>
+      </Text>
     </ResponsiveHomeDiv>
   </div>
 );
