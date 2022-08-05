@@ -1,139 +1,237 @@
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-BlackItalic.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-MediumItalic.woff') format('woff');
-    font-weight: 500;
-    font-style: italic;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Circular Std Book';
-    src: url('../fonts/CircularStd-BookItalic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Circular Std Book";
+  src: url("../fonts/CircularStd-BookItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Circular Std Book';
-    src: url('../fonts/CircularStd-Book.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Circular Std Book";
+  src: url("../fonts/CircularStd-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Circular Std';
-    src: url('../fonts/CircularStd-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
+  font-family: "Circular Std";
+  src: url("../fonts/CircularStd-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Dank Mono';
-    src: url('../fonts/DankMono-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Dank Mono";
+  src: url("../fonts/DankMono-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Dank Mono';
-    src: url('../fonts/DankMono-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Dank Mono";
+  src: url("../fonts/DankMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Book.otf') format('otf');
-    font-weight: 300;
-    font-style: normal;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Book.otf") format("otf");
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-BookOblique.otf') format('otf');
-    font-weight: 300;
-    font-style: italic;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-BookOblique.otf") format("otf");
+  font-weight: 300;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Roman.otf') format('otf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Roman.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Oblique.otf') format('otf');
-    font-weight: normal;
-    font-style: italic;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Oblique.otf") format("otf");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Medium.otf') format('otf');
-    font-weight: 500;
-    font-style: normal;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Medium.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-MediumOblique.otf') format('otf');
-    font-weight: 500;
-    font-style: italic;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-MediumOblique.otf") format("otf");
+  font-weight: 500;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Heavy.otf') format('otf');
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Heavy.otf") format("otf");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-HeavyOblique.otf') format('otf');
-    font-weight: bold;
-    font-style: italic;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-HeavyOblique.otf") format("otf");
+  font-weight: bold;
+  font-style: italic;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-Black.otf') format('otf');
-    font-weight: 700;
-    font-style: normal;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-Black.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/AvenirLTStd-BlackOblique.otf') format('otf');
-    font-weight: 700;
-    font-style: italic;
+  font-family: "Avenir";
+  src: url("../fonts/AvenirLTStd-BlackOblique.otf") format("otf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* INTER */
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-ExtraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-ExtraBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-ExtraBoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Black.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-BlackItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
 }
