@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
-import hljs from "highlight.js";
+import ReactMarkdown from "react-markdown";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { QuoteDiv, Text, Image, BlogDiv } from "components";
 import { NotFound } from "scenes";
-import blogPosts from "blogposts";
-import books from "books";
-import { FaExternalLinkAlt } from "react-icons/fa";
 
-import { marked } from "marked";
-import ReactMarkdown from "react-markdown";
 import blogPostOverview from "blogPostOverview";
 
 const StyledReactMarkdown = styled(ReactMarkdown)`
@@ -89,13 +84,13 @@ const Date = ({ children }) => (
   </Text>
 );
 
-const Code = ({ code, language }) => (
-  <div style={{ width: "100%", margin: "30px 0" }}>
-    <pre>
-      <code className={`${language} nord`}>{code}</code>
-    </pre>
-  </div>
-);
+// const Code = ({ code, language }) => (
+//   <div style={{ width: "100%", margin: "30px 0" }}>
+//     <pre>
+//       <code className={`${language} nord`}>{code}</code>
+//     </pre>
+//   </div>
+// );
 
 const BlogImage = ({ src, scrollPosition }) => (
   <ImageDiv>
@@ -166,6 +161,7 @@ const Blogpost = (props) => {
             h3: ({ node, ...props }) => (
               <Text className="md-h3" bold block {...props} />
             ),
+            blockquote: ({ node, ...props }) => <BlockQuote {...props} />,
           }}
         />
       </BlogDiv>

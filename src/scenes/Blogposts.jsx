@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled, { withTheme } from "styled-components";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { Text, BlogpostCard } from "components";
 import blogPostOverview from "../blogPostOverview";
-import keys from "keys";
 
 const BlogsDivWrapper = styled.div`
   overflow-x: hidden;

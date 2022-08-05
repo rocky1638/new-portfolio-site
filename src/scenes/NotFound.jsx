@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Text, Button, Image } from "components";
+import { Text, Image } from "components";
 
 const ResponsiveHomeDiv = styled.div`
   padding: 0 25%;
