@@ -3,6 +3,7 @@ import Button from "./Button";
 import Image from "./Image";
 import SpotifyWidget from "./SpotifyWidget";
 import BlogDiv from "./BlogDiv";
+import BlogpostCard from "./BlogpostCard";
 import QuoteDiv from "./QuoteDiv";
 import ScrollToTop from "./ScrollToTop";
 import DarkModeToggle from "./DarkModeToggle";
@@ -22,4 +23,5 @@ export {
   Loading,
   Spinner,
   BackButton,
+  BlogpostCard,
 };

@@ -1,207 +1,111 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
 import styled, { withTheme } from "styled-components";
-import OutsideClickHandler from "react-outside-click-handler";
-import { motion, AnimatePresence } from "framer-motion";
-import SpotifyLogo from "static/spotify.svg";
+import SpotifyLogo from "static/icons/spotify.svg";
 import { Text } from "components";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const OverflowDiv = styled.div`
-  box-sizing: content-box;
-  overflow: hidden;
+const SpotifyContainerDiv = styled.div`
+  /* background-color: ${({ theme }) =>
+    theme.isDark
+      ? theme.dark.blockquoteBackground
+      : theme.light.blockquoteBackground};
+  padding: 10px;
+  border-radius: 3px; */
+`;
 
-  .ticker {
-    padding: 3px 0;
-    white-space: nowrap;
-    box-sizing: content-box;
-  }
+const SpotifyWidget = (props) => {
+  const [song, setSong] = useState(null);
+  const [moreSong, setMoreSong] = useState(null);
+  const [interval, setInterval] = useState(null);
 
-  &:hover {
-    cursor: default;
+  useEffect(() => {
+    const getSongData = async () => {
+      const baseUrl = "https://rockzhou-api.herokuapp.com";
+      const songObject = await axios.get(`${baseUrl}/recently-played`);
+      await setSong(songObject.data);
 
-    .ticker {
-      -webkit-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-      -webkit-animation-name: ticker;
-      animation-name: ticker;
-      -webkit-animation-duration: 10s;
-      animation-duration: 10s;
-      cursor: default;
-      padding-right: 100%;
-      display: inline-block;
-      height: 100%;
-
-      span {
-        display: inline-block;
-        padding-right: 2rem;
+      let moreData;
+      if (songObject.data) {
+        moreData = await axios.get(
+          `${baseUrl}/spotify?artist=${songObject.data.artist["#text"]}&title=${songObject.data.name}`
+        );
+        setMoreSong(moreData.data);
       }
-    }
-  }
-`;
+    };
 
-const WavingSpotify = styled.img`
-  animation-name: wave-animation;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
-  display: inline-block;
-`;
+    getSongData().catch(console.error);
 
-class SpotifyWidget extends React.Component {
-  constructor(props) {
-    super(props);
+    const pollSongInterval = setInterval(getSongData, 18000);
+    setInterval(pollSongInterval);
 
-    this.state = {};
-  }
+    return function cleanup() {
+      clearInterval(interval);
+    };
+  }, [interval]);
 
-  componentDidMount() {
-    this.getSongData();
-    const pollSongInterval = setInterval(this.getSongData, 18000);
-    this.setState({ interval: pollSongInterval });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.interval);
-  }
-
-  getSongData = async () => {
-    const baseUrl = "https://rockzhou-api.herokuapp.com";
-    const songObject = await axios.get(`${baseUrl}/recently-played`);
-    await this.setState({ song: songObject.data });
-    let moreData;
-    if (songObject.data) {
-      moreData = await axios.get(
-        `${baseUrl}/spotify?artist=${songObject.data.artist["#text"]}&title=${songObject.data.name}`
-      );
-    }
-    await this.setState({ moreSong: moreData.data });
-  };
-
-  render() {
-    const { song, moreSong } = this.state;
-    const { showingDetails, theme } = this.props;
-
-    return (
-      <AnimatePresence>
-        <React.Fragment key={1}>
-          {song && !showingDetails && (
-            <motion.div
-              onClick={this.props.showDetails}
-              initial={{
-                y: -100,
-                opacity: 0,
-              }}
-              transition={{ duration: 0.4 }}
-              animate={{
-                y: 0,
-                opacity: 1,
-              }}
-              key={2}
-              className={`f-aic spotify-closed-widget ${
-                theme.isDark ? "spotify-closed-widget-dark" : ""
-              }`}
+  return (
+    <SpotifyContainerDiv className="f-jcl f-aic" {...props}>
+      {song ? (
+        <img
+          style={{
+            width: 96,
+            height: 96,
+            aspectRatio: 1 / 1,
+            marginRight: 16,
+          }}
+          src={song.image[song.image.length - 1]["#text"]}
+          alt="album cover"
+        />
+      ) : (
+        <Skeleton style={{ width: 96, height: 96 }} />
+      )}
+      {song ? (
+        <div style={{ overflow: "hidden" }}>
+          <Text
+            description
+            block
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {song.artist["#text"]}
+          </Text>
+          <Text
+            block
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {song.name || <Skeleton />}
+          </Text>
+          {moreSong && moreSong.external_urls && (
+            <a
+              href={moreSong.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <img
-                src={song.image[song.image.length - 1]["#text"]}
-                alt="preload"
-                style={{ height: 0 }}
-              />
-              <WavingSpotify
-                style={{ width: 35, marginRight: 15 }}
-                src={SpotifyLogo}
-                alt="spotify"
-              />
-              <div>
-                <Text block big gray6>
-                  Now Playing:
-                </Text>
-                <div className="main-song-div" style={{ overflow: "hidden" }}>
-                  <Text style={{ whiteSpace: "nowrap", overflow: "hidden" }}>
-                    {song.name} — {song.artist["#text"]}
-                  </Text>
-                </div>
-              </div>
-            </motion.div>
-          )}
-          {song && showingDetails && (
-            <OutsideClickHandler
-              key={3}
-              onOutsideClick={this.props.hideDetails}
-            >
-              <motion.div
-                initial={{
-                  y: 100,
-                  opacity: 0,
-                }}
-                transition={{ duration: 0.4 }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                }}
-                exit={{
-                  y: 100,
-                  opacity: 0,
-                }}
-                className={`song-details ${
-                  theme.isDark ? "song-details-dark" : ""
-                }`}
-              >
+              <div style={{ marginTop: 7 }} className="f-aic">
+                <Text small>Open in Spotify</Text>
                 <img
-                  style={{
-                    width: "40%",
-                    maxWidth: 250,
-                    marginRight: 15,
-                    alignSelf: "center",
-                  }}
-                  src={song.image[song.image.length - 1]["#text"]}
-                  alt="album cover"
+                  style={{ width: 15, marginLeft: 5 }}
+                  src={SpotifyLogo}
+                  alt="spotify logo"
                 />
-                <div style={{ overflow: "hidden" }}>
-                  <div className="f-aic">
-                    <OverflowDiv>
-                      <div className="ticker">
-                        <Text style={{ lineHeight: 1.1 }} block bold big>
-                          {song.name}
-                        </Text>
-                      </div>
-                    </OverflowDiv>
-                  </div>
-                  <Text block header>
-                    {song.artist["#text"]}
-                  </Text>
-                  <Text
-                    block
-                    gray4
-                    style={{ lineHeight: 1.3, marginBottom: 5 }}
-                  >
-                    {song.album["#text"]}
-                  </Text>
-                  {moreSong && moreSong.external_urls && (
-                    <a
-                      href={moreSong.external_urls.spotify}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div style={{ marginTop: 7 }} className="f-aic">
-                        <Text small>Open in Spotify</Text>
-                        <img
-                          style={{ width: 15, marginLeft: 5 }}
-                          src={SpotifyLogo}
-                          alt="spotify logo"
-                        />
-                      </div>
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            </OutsideClickHandler>
+              </div>
+            </a>
           )}
-        </React.Fragment>
-      </AnimatePresence>
-    );
-  }
-}
+        </div>
+      ) : (
+        <Skeleton style={{ width: "100%", height: 96 }} />
+      )}
+    </SpotifyContainerDiv>
+  );
+};
 
 export default withTheme(SpotifyWidget);

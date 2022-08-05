@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled, { withTheme } from "styled-components";
 import { trackWindowScroll } from "react-lazy-load-image-component";
-import { Text, Image } from "components";
+import { Text, BlogpostCard } from "components";
 import blogPostOverview from "../blogPostOverview";
 import keys from "keys";
 
@@ -24,40 +24,6 @@ const BlogsDiv = styled.div`
     padding: 30px 20px;
   }
 `;
-
-const BlogCardDiv = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100px;
-  margin-bottom: 20px;
-
-  @media only screen and (max-width: 1100px) {
-    margin-bottom: 25px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    height: 100px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    margin-bottom: 5px;
-  }
-`;
-
-const ImageDiv = styled.div`
-  height: 100%;
-  margin-right: 30px;
-
-  @media only screen and (max-width: 768px) {
-    margin-right: 20px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    margin-right: 10px;
-  }
-`;
-
 const CategoryText = ({ value, select, categories, selectedCategory }) => {
   const index = categories.findIndex((el) => el === value);
   const selected = index === selectedCategory;
@@ -115,42 +81,6 @@ class Blogposts extends React.Component {
     return category === this.state.categories[this.state.selectedCategory];
   };
 
-  renderBlogCard = (blogpost, index) => {
-    const { title, description, postname, thumbnail } = blogpost;
-    const { scrollPosition } = this.props;
-
-    return (
-      <Link
-        to={`/blog/${postname}`}
-        style={{ textDecoration: "none" }}
-        key={index}
-      >
-        <BlogCardDiv>
-          <ImageDiv>
-            <Image
-              scrollPosition={scrollPosition}
-              style={{ width: "auto", height: "100%" }}
-              noMargin
-              src={thumbnail}
-            />
-          </ImageDiv>
-          <div style={{ width: "100%" }}>
-            <Text
-              big
-              block
-              style={{ lineHeight: 1, marginBottom: 0, fontWeight: 500 }}
-            >
-              {title}
-            </Text>
-            <Text style={{ marginTop: 2 }} gray4 description block>
-              {description}
-            </Text>
-          </div>
-        </BlogCardDiv>
-      </Link>
-    );
-  };
-
   render() {
     const { categories, selectedCategory } = this.state;
     const { theme } = this.props;
@@ -164,9 +94,9 @@ class Blogposts extends React.Component {
           selectedCategory={selectedCategory}
           select={this.select}
         />
-        {blogPostOverview
-          .filter(this.filter)
-          .map((blogpost, index) => this.renderBlogCard(blogpost, index))}
+        {blogPostOverview.filter(this.filter).map((blogpost, index) => (
+          <BlogpostCard blogpost={blogpost} index={index} />
+        ))}
       </BlogsDiv>
     );
   }

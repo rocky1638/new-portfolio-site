@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
-import Back from "static/back.svg";
+import Back from "static/icons/back.svg";
 
 const Icon = styled.img`
   /* hide back button on home page */

@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* FOR IF TOO SMALL */
+  /* transform: scale(1.1);
+  transform-origin: 0 0; */
 }
 
 code {
@@ -39,11 +43,11 @@ code.code-block {
 
 a {
   text-decoration: underline;
-  color: #73aae6;
+  color: #708aff;
 }
 
 a:visited {
-  color: #73aae6;
+  color: #708aff;
 }
 
 li {
@@ -120,8 +124,8 @@ li {
 }
 
 ::selection {
-  background: #64f575;
+  background: #91a6ff;
 }
 ::-moz-selection {
-  background: #64f575;
+  background: #91a6ff;
 }
