@@ -17,15 +17,9 @@ const blogPostOverview = [
     tags: ["apps", "tech"],
   },
   {
-    title: "toronto",
-    postname: "toronto",
-    thumbnail: "https://foodiy-beta.s3.amazonaws.com/toronto.jpg",
-    description: "more than just drake and the raptors",
-    tags: ["places"],
-  },
-  {
     title: "mrsa",
     postname: "mrsa",
+    date: "07/20/2019",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/mrsa.png",
     description: "aka: “movie review sentiment analysis”",
     tags: ["projects", "tech"],
@@ -33,28 +27,32 @@ const blogPostOverview = [
   {
     title: "my coding setup",
     postname: "codesetup",
+    date: "06/07/2019",
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/vim.png",
     description: "a walkthrough of my dev setup, and why it's so great",
     tags: ["apps", "tech"],
   },
   {
+    title: "consensys",
+    postname: "consensys1",
+    date: "08/31/2018",
+    thumbnail: "https://s3.amazonaws.com/foodiy-beta/consensys-logo.png",
+    description: "an overview of my first coop experience",
+    tags: ["work", "internship", "tech"],
+  },
+  {
     title: "the water boys",
     postname: "thewaterboys",
+    date: "06/12/2018",
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/waterboys4.jpg",
     description:
       "my time spent with uwaterloo's premiere all-male a capella group",
     tags: ["personal", "music"],
   },
   {
-    title: "consensys",
-    postname: "consensys1",
-    thumbnail: "https://s3.amazonaws.com/foodiy-beta/consensys-logo.png",
-    description: "an overview of my first coop experience",
-    tags: ["work", "internship", "tech"],
-  },
-  {
     title: "sapling",
     postname: "sapling",
+    date: "03/10/2018",
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/sapling.jpg",
     description: "an app helping users keep track of practice times",
     tags: ["projects", "tech"],
@@ -62,16 +60,10 @@ const blogPostOverview = [
   {
     title: "find your grail",
     postname: "fyg",
+    date: "01/15/2018",
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/fyg_thumbnail.jpg",
     description: "helping people find cool clothes close to home",
     tags: ["projects", "tech"],
-  },
-  {
-    title: "calgary",
-    postname: "calgary",
-    thumbnail: "https://foodiy-beta.s3.amazonaws.com/calgary.jpg",
-    description: "a bunch of cool things to do in the heart of alberta",
-    tags: ["places"],
   },
 ];
 
