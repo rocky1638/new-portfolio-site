@@ -18,17 +18,17 @@ const Tag = styled.button`
   align-items: center;
 `;
 
-const StyledImage = styled.img`
-  width: 96px;
-  height: 96px;
-  margin-right: 16px;
-  object-fit: contain;
-  object-position: center center;
-  background-color: ${({ theme }) =>
-    theme.isDark
-      ? theme.dark.blockquoteBackground
-      : theme.light.blockquoteBackground};
-`;
+// const StyledImage = styled.img`
+//   width: 96px;
+//   height: 96px;
+//   margin-right: 16px;
+//   object-fit: contain;
+//   object-position: center center;
+//   background-color: ${({ theme }) =>
+//     theme.isDark
+//       ? theme.dark.blockquoteBackground
+//       : theme.light.blockquoteBackground};
+// `;
 
 const LeftDiv = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ const BlogCardDiv = styled.div`
 `;
 
 const BlogpostCard = ({ blogpost }) => {
-  const { title, blurb, postname, thumbnail, date, tags } = blogpost;
+  const { title, blurb, postname, date, tags } = blogpost;
   const renderTags = () => {
     if (tags) {
       return tags.map((tag, i) => (
