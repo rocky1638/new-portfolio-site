@@ -4,6 +4,8 @@ const blogPostOverview = [
     postname: "neureka",
     date: "06/01/2020",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/brain.png",
+    blurb:
+      "My friend Tony and I worked on a machine learning competition to predict seizures from raw EEG (electroencephalogram) files and placed 4th place overall.",
     description:
       "An exploration into detecting seizures using EEG data and ML.",
     tags: ["projects", "tech"],
@@ -14,6 +16,8 @@ const blogPostOverview = [
     date: "10/27/2019",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/productivity.png",
     description: "All the apps I use to stay on top of things.",
+    blurb:
+      "I’m always trying to increase my productivity (I might actually spend more time trying to improve my productivity than actually being productive, but that’s beside the point).",
     tags: ["apps", "tech"],
   },
   {
@@ -22,6 +26,7 @@ const blogPostOverview = [
     date: "07/20/2019",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/mrsa.png",
     description: "aka: “movie review sentiment analysis”",
+    blurb: "WIP",
     tags: ["projects", "tech"],
   },
   {

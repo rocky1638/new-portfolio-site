@@ -173,7 +173,7 @@ const Home = (props) => {
           Currently Playing
         </Text>
         <SpotifyWidget style={{ marginBottom: 24 }} />
-        <Text block bold small underline style={{ marginBottom: 4 }}>
+        <Text block bold small underline style={{ marginBottom: 8 }}>
           Recent Blog Posts
         </Text>
         {getRecentBlogposts()}
