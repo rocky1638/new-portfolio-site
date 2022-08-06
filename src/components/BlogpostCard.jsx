@@ -52,7 +52,7 @@ const BlogpostCard = ({ blogpost }) => {
     if (tags) {
       return tags.map((tag, i) => (
         <Tag index={i}>
-          <Text pill>{tag}</Text>
+          <Text small>{tag}</Text>
         </Tag>
       ));
     }
@@ -65,21 +65,21 @@ const BlogpostCard = ({ blogpost }) => {
           <div>
             <Text
               header
+              block
               style={{
                 lineHeight: 1,
-                marginBottom: 0,
-                marginRight: 6,
+                marginBottom: 4,
                 fontWeight: 500,
               }}
             >
               {title}
             </Text>
-            <Text style={{ marginBottom: 2 }} block pill gray8>
+            {/* <Text style={{ marginBottom: 2 }} block pill gray8>
               Published {date || ""}
-            </Text>
+            </Text> */}
             <TagDiv className="f-aic f-jcl">{renderTags()}</TagDiv>
           </div>
-          <Text style={{ marginTop: 2 }} gray4 description block>
+          <Text style={{ marginTop: 2 }} gray4 small block>
             {description}
           </Text>
         </RightDiv>
