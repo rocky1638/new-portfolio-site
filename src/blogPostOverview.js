@@ -21,12 +21,13 @@ const blogPostOverview = [
     tags: ["apps", "tech"],
   },
   {
-    title: "mrsa",
+    title: "MRSA",
     postname: "mrsa",
     date: "07/20/2019",
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/mrsa.png",
-    description: "aka: “movie review sentiment analysis”",
-    blurb: "WIP",
+    description: "AKA: “Movie Review Sentiment Analysis”",
+    blurb:
+      "I trained a logistic regression classifier to classify whether a given movie review was positive or negative and made a React/Flask web app to allow users to train and test the classifier. I also learned a bunch of DevOps related things along the way.",
     tags: ["projects", "tech"],
   },
   {
