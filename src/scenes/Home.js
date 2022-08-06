@@ -46,10 +46,12 @@ const LinkPill = styled.div`
 const Home = (props) => {
   const { theme } = props;
   const getRecentBlogposts = () => {
-    return [...blogPostOverview]
-      .sort((a, b) => Date(b.date) > Date(a.date))
-      .slice(0, 3)
-      .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />);
+    return (
+      [...blogPostOverview]
+        // .sort((a, b) => Date(b.date) > Date(a.date))
+        .slice(0, 3)
+        .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />)
+    );
   };
   return (
     <HomeWrapper
