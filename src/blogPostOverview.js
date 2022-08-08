@@ -17,7 +17,7 @@ const blogPostOverview = [
     thumbnail: "https://foodiy-beta.s3.amazonaws.com/productivity.png",
     description: "All the apps I use to stay on top of things.",
     blurb:
-      "I’m always trying to increase my productivity (I might actually spend more time trying to improve my productivity than actually being productive, but that’s beside the point).",
+      "I’m always trying to increase my productivity (I might actually spend more time trying to improve my productivity than actually being productive, but that’s beside the point). Here's a list of the apps I use daily to keep track of the things going on in my life",
     tags: ["apps", "tech"],
   },
   {
@@ -31,11 +31,13 @@ const blogPostOverview = [
     tags: ["projects", "tech"],
   },
   {
-    title: "my coding setup",
+    title: "My Coding Setup",
     postname: "codesetup",
     date: "06/07/2019",
     thumbnail: "https://s3.amazonaws.com/foodiy-beta/vim.png",
-    description: "a walkthrough of my dev setup, and why it's so great",
+    description: "A walkthrough of my development environment.",
+    blurb:
+      "A brief history of my experiences with code editors, followed by an attempt to convince you to learn how to use Vim (even though you might have PTSD from being unable to exit it that one time).",
     tags: ["apps", "tech"],
   },
   {

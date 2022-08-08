@@ -2,7 +2,7 @@ I’m always trying to increase my productivity _\(I might actually spend more t
 
 Here are all the productivity apps I use for all aspects of my note\-taking life and why I’m using them.
 
-## Academic Notes
+## Academic notes
 
 For me, being in computer science, my courses fall into two main categories:
 
@@ -51,7 +51,7 @@ I stopped using Typora because I wanted Vim keybindings and felt that Typora did
 
 If you wanna try it out, though, download it [here](https://www.typora.io/).
 
-## Personal Notes
+## Personal notes
 
 These are all the notes that aren’t for school. This can include anything from random ideas to notes about my day, books I’m reading, or interesting articles I find online.
 
@@ -75,7 +75,7 @@ Even though Ulysses does have slightly more functionality, there’s something a
 
 If you’re still curious, feel free to check it out [here](https://ulysses.app/).
 
-## Todo Lists
+## To-do lists
 
 I don’t use to\-do lists too often in my daily life because I find that my calendar and Notion do most of the work already. Still, when I use to\-do lists, it’s generally for small things like groceries or tasks I have to do the next day that occur to me when I’m lying in bed.
 

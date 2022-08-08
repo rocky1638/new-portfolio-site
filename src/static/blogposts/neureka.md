@@ -2,7 +2,7 @@
 
 My friend Tony and I worked on a machine learning competition to predict seizures from raw EEG \(electroencephalogram\) files and placed 4th place overall. Check out his portfolio site [here.](https://tonyxu.me/)
 
-## An Overview
+## An overview
 
 The Neureka 2020 Competition, open to all high school and post\-secondary students globally, was a two\-month\-long contest to create models to accurately predict and find seizures  within raw EEG data. For more information on the contest and results, visit the official site [here.](https://neureka-challenge.com/results/) _(Our team name was RocketShoes)._
 

@@ -46,6 +46,24 @@ const StyledReactMarkdown = styled(ReactMarkdown)`
     margin-top: 16px;
     text-decoration: underline;
   }
+
+  pre {
+    padding: 8px;
+    border-radius: 4px;
+    background-color: ${({ theme }) =>
+      theme.isDark ? theme.dark.pill : theme.light.pill};
+
+    code {
+      background-color: transparent;
+      color: ${({ theme }) =>
+        theme.isDark ? theme.dark.black : theme.light.black};
+    }
+  }
+
+  code {
+    background-color: ${({ theme }) =>
+      theme.isDark ? theme.dark.pill : theme.light.pill};
+  }
 `;
 
 const BlogDivWrapper = styled.div`
@@ -84,14 +102,6 @@ const Date = ({ children }) => (
     - {children} -
   </Text>
 );
-
-// const Code = ({ code, language }) => (
-//   <div style={{ width: "100%", margin: "30px 0" }}>
-//     <pre>
-//       <code className={`${language} nord`}>{code}</code>
-//     </pre>
-//   </div>
-// );
 
 const BlogImage = ({ src, scrollPosition }) => (
   <ImageDiv>
@@ -179,6 +189,7 @@ const Blogpost = (props) => {
               />
             ),
             blockquote: ({ node, ...props }) => <BlockQuote {...props} />,
+            // pre: ({ node, ...props }) => <Code {...props} />,
           }}
         />
       </BlogDiv>
