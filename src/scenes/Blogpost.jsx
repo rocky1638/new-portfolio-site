@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
+// import toc from "markdown-toc-unlazy";
 import ReactMarkdown from "react-markdown";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { QuoteDiv, Text, Image, BlogDiv } from "components";
@@ -110,11 +111,14 @@ const Blogpost = (props) => {
   const [markdown, setMarkdown] = useState(null);
   const [error, setError] = useState(null);
 
+  const linkify = (str) => str.replace(/\s+/g, "-").toLowerCase();
+
   useEffect(() => {
     const getFileData = async () => {
       const path = require(`../static/blogposts/${props.match.params.postname}.md`);
       const response = await fetch(path);
       const text = await response.text();
+      // const tocText = toc(text).content;
       setMarkdown(text);
     };
     getFileData().catch((e) => {
@@ -156,10 +160,23 @@ const Blogpost = (props) => {
             ),
             img: ({ node, ...props }) => <BlogImage {...props} />,
             h2: ({ node, ...props }) => (
-              <Text className="md-h2" header block bold {...props} />
+              <Text
+                id={linkify(props.children[0])}
+                className="md-h2"
+                header
+                block
+                bold
+                {...props}
+              />
             ),
             h3: ({ node, ...props }) => (
-              <Text className="md-h3" bold block {...props} />
+              <Text
+                id={linkify(props.children[0])}
+                className="md-h3"
+                bold
+                block
+                {...props}
+              />
             ),
             blockquote: ({ node, ...props }) => <BlockQuote {...props} />,
           }}
