@@ -1,6 +1,6 @@
 const blogPostOverview = [
   {
-    title: "4000 Weeks by Oliver Burkeman",
+    title: "Four Thousand Weeks by Oliver Burkeman",
     postname: "4000weeks",
     date: "08/15/2022",
     blurb:
