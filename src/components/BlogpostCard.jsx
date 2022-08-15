@@ -18,18 +18,6 @@ const Tag = styled.button`
   align-items: center;
 `;
 
-// const StyledImage = styled.img`
-//   width: 96px;
-//   height: 96px;
-//   margin-right: 16px;
-//   object-fit: contain;
-//   object-position: center center;
-//   background-color: ${({ theme }) =>
-//     theme.isDark
-//       ? theme.dark.blockquoteBackground
-//       : theme.light.blockquoteBackground};
-// `;
-
 const LeftDiv = styled.div`
   display: flex;
   flex-direction: column;

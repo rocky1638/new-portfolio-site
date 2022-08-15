@@ -46,12 +46,16 @@ const LinkPill = styled.div`
 const Home = (props) => {
   const { theme } = props;
   const getRecentBlogposts = () => {
-    return (
-      [...blogPostOverview]
-        // .sort((a, b) => Date(b.date) > Date(a.date))
-        .slice(0, 3)
-        .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />)
-    );
+    return [...blogPostOverview]
+      .filter((bp) => !bp.isBook)
+      .slice(0, 3)
+      .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />);
+  };
+  const getRecentBookSummaries = () => {
+    return [...blogPostOverview]
+      .filter((bp) => bp.isBook)
+      .slice(0, 3)
+      .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />);
   };
   return (
     <HomeWrapper
@@ -108,7 +112,7 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-          <Text block bold small underline style={{ marginBottom: 4 }}>
+          <Text block bold header style={{ marginBottom: 8 }}>
             About
           </Text>
           <Text style={{ marginBottom: 16 }} block gray4>
@@ -171,16 +175,24 @@ const Home = (props) => {
             <i>(currently learning Korean)</i>, reading, and cooking.
           </Text>
         </div>
-        <Text block bold small underline style={{ marginBottom: 4 }}>
+        <Text block bold header style={{ marginBottom: 8 }}>
           Currently Playing
         </Text>
-        <SpotifyWidget style={{ marginBottom: 24 }} />
-        <Text block bold small underline style={{ marginBottom: 8 }}>
+        <SpotifyWidget style={{ marginBottom: 28 }} />
+        <Text block bold header style={{ marginBottom: 8 }}>
           Recent Blog Posts
         </Text>
         {getRecentBlogposts()}
-        <Text small bold>
+        <Text small bold block style={{ marginBottom: 32 }}>
           <Link to="/blog">See All Blog Posts -&gt;</Link>
+        </Text>
+
+        <Text block bold header style={{ marginBottom: 8 }}>
+          Recent Book Summaries
+        </Text>
+        {getRecentBookSummaries()}
+        <Text small bold>
+          <Link to="/books">See All Book Summaries -&gt;</Link>
         </Text>
       </ResponsiveHomeDiv>
     </HomeWrapper>

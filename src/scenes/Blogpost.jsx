@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
-// import toc from "markdown-toc-unlazy";
 import ReactMarkdown from "react-markdown";
 import { trackWindowScroll } from "react-lazy-load-image-component";
 import { QuoteDiv, Text, Image, BlogDiv } from "components";
@@ -111,9 +110,7 @@ const BlogImage = ({ src, scrollPosition }) => (
 
 const BlockQuote = ({ quote }) => (
   <QuoteDiv>
-    <Text description italic>
-      {quote}
-    </Text>
+    <Text italic>{quote}</Text>
   </QuoteDiv>
 );
 
@@ -188,8 +185,11 @@ const Blogpost = (props) => {
                 {...props}
               />
             ),
-            blockquote: ({ node, ...props }) => <BlockQuote {...props} />,
-            // pre: ({ node, ...props }) => <Code {...props} />,
+            blockquote: ({ node, ...props }) => {
+              const text = props.children.find((child) => child !== "\n").props
+                .children[0];
+              return <BlockQuote quote={text} />;
+            },
           }}
         />
       </BlogDiv>

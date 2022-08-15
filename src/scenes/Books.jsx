@@ -1,63 +1,53 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Image, Text } from "components";
-import books from "booksOverview";
+import styled, { withTheme } from "styled-components";
+import { trackWindowScroll } from "react-lazy-load-image-component";
+import { Text, BlogpostCard } from "components";
+import blogPostOverview from "../blogPostOverview";
 
-const BooksDiv = styled.div`
-  padding: 30px 25%;
-
-  @media only screen and (max-width: 1100px) {
-    padding: 30px 150px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 30px 50px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    padding: 30px 20px;
-  }
+const BooksDivWrapper = styled.div`
+  overflow-x: hidden;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 60px 32px 60px 32px;
+  background-color: ${({ theme }) =>
+    theme.isDark ? theme.dark.white : theme.light.white};
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
-
-  img {
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media only screen and (max-width: 480px) {
-  }
+const BookDiv = styled.div`
+  max-width: ${(props) => props.theme.dimensions.maxWidth}px;
+  width: 100%;
+  padding: 0;
 `;
 
-class Books extends React.Component {
-  renderBooks() {
-    return books.map(book => {
-      return (
-        <Link to={`/books/${book.title}`}>
-          <Image noMargin style={{ cursor: "pointer" }} src={book.image} />
-        </Link>
-      );
-    });
-  }
-
-  render() {
-    return (
-      <BooksDiv>
-        <Text huge block style={{ marginBottom: 20 }}>
-          Books
+const Blogposts = ({ theme }) => {
+  return (
+    <BooksDivWrapper
+      className={`f-jcc fadeIn ${theme.isDark ? "bg-dark" : "bg-light"}`}
+    >
+      <BookDiv>
+        <Text fontWeight={500} style={{ marginBottom: 30 }} block big>
+          Rock's Book Summaries
         </Text>
-        <Grid>{this.renderBooks()}</Grid>
-      </BooksDiv>
-    );
-  }
-}
-
-export default Books;
+        <Text block gray4 style={{ marginBottom: 32 }}>
+          Writing summaries for books that you read has been shown to help you
+          remember them better, so here's the summaries for books that I felt
+          were insightful.
+        </Text>
+        {/* <BlogTypeSelector
+            categories={categories}
+            selectedCategory={selectedCategory}
+            select={this.select}
+          /> */}
+        {blogPostOverview
+          .filter((book) => book.isBook)
+          .map((book, index) => (
+            <BlogpostCard blogpost={book} index={index} />
+          ))}
+      </BookDiv>
+    </BooksDivWrapper>
+  );
+};
+export default withTheme(trackWindowScroll(Blogposts));

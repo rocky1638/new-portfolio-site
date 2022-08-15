@@ -1,5 +1,15 @@
 const blogPostOverview = [
   {
+    title: "4000 Weeks by Oliver Burkeman",
+    postname: "4000weeks",
+    date: "08/15/2022",
+    blurb:
+      "A book that focuses on the commonly avoided topic of the shortness of life, and why we're approaching time management in all the wrong ways.",
+    description: "Why we should cherish the finitude of life.",
+    tags: ["life", "philosophy"],
+    isBook: true,
+  },
+  {
     title: "Neureka 2020",
     postname: "neureka",
     date: "06/01/2020",
