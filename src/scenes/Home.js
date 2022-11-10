@@ -18,7 +18,7 @@ const HomeWrapper = styled.div`
 `;
 
 const ResponsiveHomeDiv = styled.div`
-  max-width: ${(props) => props.theme.dimensions.maxWidth}px;
+  max-width: ${props => props.theme.dimensions.maxWidth}px;
   width: 100%;
   padding: 0;
 `;
@@ -33,7 +33,7 @@ const CircleImage = styled.img`
 `;
 
 const LinkPill = styled.div`
-  background-color: ${(props) =>
+  background-color: ${props =>
     props.theme.isDark ? props.theme.dark.button : props.theme.light.button};
   padding: 0px 5px;
   border-radius: 4px;
@@ -43,17 +43,17 @@ const LinkPill = styled.div`
     text-decoration: none;
   }
 `;
-const Home = (props) => {
+const Home = props => {
   const { theme } = props;
   const getRecentBlogposts = () => {
     return [...blogPostOverview]
-      .filter((bp) => !bp.isBook)
+      .filter(bp => !bp.isBook)
       .slice(0, 3)
       .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />);
   };
   const getRecentBookSummaries = () => {
     return [...blogPostOverview]
-      .filter((bp) => bp.isBook)
+      .filter(bp => bp.isBook)
       .slice(0, 3)
       .map((bp, i) => <BlogpostCard blogpost={bp} index={i} />);
   };
@@ -66,7 +66,7 @@ const Home = (props) => {
         <div
           style={{
             marginTop: "-15px",
-            transition: "0.4s",
+            transition: "0.4s"
           }}
         >
           <div className="f-aic" style={{ marginBottom: 32 }}>
@@ -117,8 +117,9 @@ const Home = (props) => {
           </Text>
           <Text style={{ marginBottom: 16 }} block gray4>
             Hi, I'm Rock! I recently graduated from the University of Waterloo
-            with a Bachelor's in Computer Science, and I'm set to start working
-            at{" "}
+            with a Bachelor's in Computer Science and am currently looking for
+            software engineering roles in the NYC area after a short but
+            valuable time at at{" "}
             <a
               href="https://about.facebook.com/"
               target="_blank"
@@ -126,9 +127,8 @@ const Home = (props) => {
             >
               Meta
             </a>{" "}
-            in New York City this upcoming fall. During my studies, I had the
-            opportunity to learn from talented individuals while optimizing
-            production lines at{" "}
+            . During my studies, I had the opportunity to learn from talented
+            individuals while optimizing production lines at{" "}
             <a
               href="https://tesla.com/"
               target="_blank"
