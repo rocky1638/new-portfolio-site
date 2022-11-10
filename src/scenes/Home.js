@@ -119,7 +119,7 @@ const Home = props => {
             Hi, I'm Rock! I recently graduated from the University of Waterloo
             with a Bachelor's in Computer Science and am currently looking for
             software engineering roles in the NYC area after a short but
-            valuable time at at{" "}
+            valuable time at{" "}
             <a
               href="https://about.facebook.com/"
               target="_blank"
