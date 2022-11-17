@@ -24,7 +24,7 @@ const SpotifyWidget = (props) => {
     const getSongData = async () => {
       const baseUrl = "https://rockzhou-api.herokuapp.com";
       const songObject = await axios.get(`${baseUrl}/recently-played`);
-      await setSong(songObject.data);
+      setSong(songObject.data);
 
       let moreData;
       if (songObject.data) {
